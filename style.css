@@ -75,3 +75,28 @@
   }
 }
 
+/* ----------------- */
+
+.readButton{
+  width: 15em;
+  height: 3em;
+  font-size: larger;
+  color: #858585;
+  background-color: #8bdfc1;
+  border: none;
+  padding: 0;
+  appearance: none;
+  margin: 6em auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.readButton:hover{
+  color: #858585;
+  background-color: #c9feec;
+  cursor: pointer;
+}
+
+.readButtonText{
+  margin-left: 0.5em;
+}
