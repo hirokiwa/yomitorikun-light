@@ -109,21 +109,40 @@
   margin: 0 auto;
   width: 35em;
   padding: 0 auto;
-  border-bottom: solid 1px #acacac;
 }
 
 .subTitleWrapper{
   display: flex;
   align-items: center;
   justify-content: center;
+  border-bottom: solid 1px #acacac;
 }
 
 .howToUseTitle{
   margin: 0;
 }
 
+.howToUseOrderList{
+  text-align: left;
+  padding: 1em 3em;
+  margin: 0;
+}
+
+.howToUseList{
+  margin: 1em;
+}
+
 @media (max-width: 35em) {
   .howToUseWrapper{
     width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .howToUseOrderList{
+    padding: 1em 1em 1em 2em;
+  }
+  .subTitleWrapper{
+    margin: 0 0.5em;
   }
 }
