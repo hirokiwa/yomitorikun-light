@@ -100,3 +100,30 @@
 .readButtonText{
   margin-left: 0.5em;
 }
+
+/* ------------------ */
+
+.howToUseWrapper{
+  margin-top: 2em;
+  width: 80%;
+  margin: 0 auto;
+  width: 35em;
+  padding: 0 auto;
+  border-bottom: solid 1px #acacac;
+}
+
+.subTitleWrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.howToUseTitle{
+  margin: 0;
+}
+
+@media (max-width: 35em) {
+  .howToUseWrapper{
+    width: 100%;
+  }
+}
