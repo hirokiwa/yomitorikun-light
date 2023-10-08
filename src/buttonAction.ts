@@ -1,3 +1,4 @@
+import { addHistory } from "./qrCodeHistory";
 import { getBlobFromClipboard } from "./utils/clipboard";
 import { qrBlobToString } from "./utils/qrCode";
 
@@ -13,13 +14,7 @@ const readQrCodeHandler = async () => {
 
   qrBlobToString(qrBlob)
     .then((url) => {
-      // if (history.length === 0) {
-      //   updateHistory( url );
-      // } else {
-      //   if (history[0].url !== url) {
-      //     updateHistory( url );
-      //   }
-      // }
+      addHistory(url);
       if (!window.open(url)) {
         location.href = url;
       }
