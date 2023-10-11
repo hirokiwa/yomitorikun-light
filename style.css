@@ -52,6 +52,7 @@
   gap: 1em;
   width: 100%;
   max-width: 1250px;
+  margin: 0 auto;
 }
 
 .sideContent{
@@ -97,8 +98,13 @@
 
 .historyUnorderedList {
   padding: 0;
-  height: 80vh;
-  overflow-y: scroll;
+}
+
+@media (min-width: 900px) {
+  .historyUnorderedList{
+    height: 80vh;
+    overflow-y: scroll;
+  }
 }
 
 .historyLink {
@@ -195,5 +201,11 @@
   }
   .subTitleWrapper{
     margin: 0 0.5em;
+  }
+  .howToUseWrapper{
+    width: 100%;
+  }
+  .contentsWrapper{
+    max-width: 35em;
   }
 }
