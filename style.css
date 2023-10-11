@@ -57,6 +57,7 @@
 .sideContent{
   grid-column: 1 / 4;
   min-width: 300px;
+  margin-top: 3em;
 }
 
 .bodyContent{
@@ -73,6 +74,54 @@
     grid-row: 1 / 2;
     grid-column: 1/13;
   }
+}
+
+/* ------------------- */
+
+.historyTitleWrapper {
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px #acacac;
+  padding-left: 0.5em;
+}
+
+@media(max-width: 900px){
+  .historyTitleWrapper{
+    margin: 0 0.5em;
+  }
+}
+
+.historyTitle {
+  margin: 0;
+}
+
+.historyUnorderedList {
+  padding: 0;
+}
+
+.historyLink {
+  overflow: hidden;
+  white-space: nowrap;
+  text-decoration:none;
+  text-overflow: ellipsis;
+  color: #858585;
+  width: 100%;
+}
+
+.historyLink:hover {
+  color: #bee8d9;
+}
+
+.historyList {
+  margin: 1em;
+  list-style: none;
+  display: flex;
+  align-items: center;
+
+}
+
+.copyIconSvg {
+  margin-left: auto;
 }
 
 /* ----------------- */
