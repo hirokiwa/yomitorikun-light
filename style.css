@@ -97,6 +97,8 @@
 
 .historyUnorderedList {
   padding: 0;
+  height: 80vh;
+  overflow-y: scroll;
 }
 
 .historyLink {
