@@ -2,13 +2,14 @@ export const viewFullHistories = (history: urlHistory[]) => {
   document.querySelector<HTMLDivElement>('#historyElement')!.innerHTML = history.length !== 0
     ? `
       <ul class="historyUnorderedList">
-        ${history.map((h) => {
+        ${history.map((h, i) => {
           return (`
             <li class="historyList" key=${crypto.randomUUID()}>
               <a
                 href=${h.url}
                 target="_blank"
                 class="historyLink"
+                title="${i+1}番目の履歴を開く"
               >
                 ${h.url}
               </a>
