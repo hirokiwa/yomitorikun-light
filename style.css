@@ -58,6 +58,7 @@
 
 .sideContent{
   grid-column: 1 / 4;
+  grid-row: 1 / 2;
   min-width: 300px;
   margin-top: 3em;
 }
