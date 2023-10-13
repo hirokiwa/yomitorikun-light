@@ -1,5 +1,6 @@
 .body{
   margin: 0;
+  margin-bottom: 1em;
   color: #858585;
 }
 
@@ -52,7 +53,7 @@
   gap: 1em;
   width: 100%;
   max-width: 1250px;
-  margin: 0 auto;
+  margin: 0 auto 2em auto;
 }
 
 .sideContent{
@@ -208,4 +209,15 @@
   .contentsWrapper{
     max-width: 35em;
   }
+}
+
+/* -------------- */
+.footer{
+  text-align: center;
+  position: sticky;
+  top: 100vh;
+}
+
+.footerTitle{
+  margin: 0;
 }
