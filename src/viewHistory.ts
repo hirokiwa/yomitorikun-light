@@ -11,7 +11,7 @@ export const viewFullHistories = (history: urlHistory[]) => {
     ? `
       <ul class="historyUnorderedList">
         ${historyWithId.map((h, i) => {
-      return (`
+          return (`
             <li class="historyList" key="historyList-${h.id}">
               <a
                 href=${h.text}
@@ -41,7 +41,7 @@ export const viewFullHistories = (history: urlHistory[]) => {
               </button>
             </li>
             `)
-    }).join(" ")}
+          }).join(" ")}
       </ul>
     `
     : `<p>履歴はありません。</p>`;
