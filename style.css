@@ -1,10 +1,15 @@
+
 .body{
+  font-family: 'Noto Sans JP', sans-serif;
   margin: 0;
-  color: #858585;
+  margin-bottom: 1em;
+  color: #707070;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .header{
-  color: #858585;
+  color: #707070;
   border-bottom: solid 1px #acacac;
   padding: 0;
   margin: 0;
@@ -20,7 +25,7 @@
 
 .titleLink{
   display: inline-block;
-  color: #858585;
+  color: #707070;
   appearance: none;
   border: none;
   padding: 0;
@@ -52,11 +57,14 @@
   gap: 1em;
   width: 100%;
   max-width: 1250px;
+  margin: 0 auto 2em auto;
 }
 
 .sideContent{
   grid-column: 1 / 4;
+  grid-row: 1 / 2;
   min-width: 300px;
+  margin-top: 3em;
 }
 
 .bodyContent{
@@ -75,14 +83,97 @@
   }
 }
 
+/* ------------------- */
+
+.historyTitleWrapper {
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px #acacac;
+  padding-left: 0.5em;
+}
+
+@media(max-width: 900px){
+  .historyTitleWrapper{
+    margin: 0 0.5em;
+    justify-content: center;
+    padding-left: 0;
+  }
+}
+
+.historyTitle {
+  margin: 0;
+  margin-left: 0.25em;
+}
+
+.historyWrapper{
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
+.historyChild{
+  padding: 0.5em 0;
+}
+
+.historyUnorderedList {
+  margin: 0;
+}
+
+@media (min-width: 900px) {
+  .historyUnorderedList{
+    height: 80vh;
+    overflow-y: scroll;
+    height: 80vh;
+  }
+}
+
+.historyLink {
+  overflow: hidden;
+  white-space: nowrap;
+  text-decoration:none;
+  text-overflow: ellipsis;
+  color: #707070;
+  width: 100%;
+}
+
+.historyLink:hover {
+  color: #bee8d9;
+}
+
+.historyList {
+  margin: 1em 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.buttonToCopyLink {
+  margin-left: auto;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  appearance: none;
+  color: #707070;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buttonToCopyLink:hover{
+  background-color: #e6e6e6;
+}
+
+.copyIconSvg {
+  margin-left: auto;
+}
+
 /* ----------------- */
 
 .readButton{
   width: 15em;
   height: 3em;
   font-size: larger;
-  color: #858585;
-  background-color: #8bdfc1;
+  color: #4f4f4f;
+  background-color: #9bf5d5;
   border: none;
   padding: 0;
   appearance: none;
@@ -90,9 +181,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 50vh;
 }
 .readButton:hover{
-  color: #858585;
   background-color: #c9feec;
   cursor: pointer;
 }
@@ -120,6 +211,7 @@
 
 .howToUseTitle{
   margin: 0;
+  margin-left: 0.25em;
 }
 
 .howToUseOrderList{
@@ -145,4 +237,21 @@
   .subTitleWrapper{
     margin: 0 0.5em;
   }
+  .howToUseWrapper{
+    width: 100%;
+  }
+  .contentsWrapper{
+    max-width: 35em;
+  }
+}
+
+/* -------------- */
+.footer{
+  text-align: center;
+  position: sticky;
+  top: 100vh;
+}
+
+.footerTitle{
+  margin: 0;
 }
