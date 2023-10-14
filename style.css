@@ -92,11 +92,13 @@
   .historyTitleWrapper{
     margin: 0 0.5em;
     justify-content: center;
+    padding-left: 0;
   }
 }
 
 .historyTitle {
   margin: 0;
+  margin-left: 0.25em;
 }
 
 .historyUnorderedList {
@@ -195,6 +197,7 @@
 
 .howToUseTitle{
   margin: 0;
+  margin-left: 0.25em;
 }
 
 .howToUseOrderList{
