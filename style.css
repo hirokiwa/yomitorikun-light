@@ -105,10 +105,17 @@
   margin-left: 0.25em;
 }
 
+.historyWrapper{
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
+.historyChild{
+  padding: 0.5em 0;
+}
+
 .historyUnorderedList {
-  padding: 0;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
+  margin: 0;
 }
 
 @media (min-width: 900px) {
@@ -133,7 +140,7 @@
 }
 
 .historyList {
-  margin: 1em;
+  margin: 1em 0;
   list-style: none;
   display: flex;
   align-items: center;

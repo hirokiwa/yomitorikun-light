@@ -64,7 +64,7 @@ export const viewFullHistories = (history: urlHistory[]) => {
   })
   document.querySelector<HTMLDivElement>('#historyElement')!.innerHTML = historyWithId.length !== 0
     ? `
-      <ul class="historyUnorderedList">
+      <ul class="historyUnorderedList historyChild">
         ${historyWithId.map((h, i) => {
           return (`
             <li class="historyList" key="historyList-${h.id}">
@@ -103,7 +103,7 @@ export const viewFullHistories = (history: urlHistory[]) => {
           }).join(" ")}
       </ul>
     `
-    : `<p>履歴はありません。</p>`;
+    : `<p class="historyChild">履歴はありません。</p>`;
   historyWithId.map((h) => {
     const buttonElementToCopyLink = document.querySelector<HTMLButtonElement>(`#buttonToCopyHistoryLink-${h.id}`);
     if (!buttonElementToCopyLink) {
