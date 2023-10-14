@@ -181,7 +181,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50vh;
+  border-radius: 0.5em;
 }
 .readButton:hover{
   background-color: #c9feec;
