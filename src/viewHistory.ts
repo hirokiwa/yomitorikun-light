@@ -88,7 +88,7 @@ export const viewFullHistories = (history: urlHistory[]) => {
                   height = "28"
                   viewBox = "0 -960 960 960"
                   width = "28"
-                  fill = "#858585"
+                  fill = "#707070"
                   class="copyIconSvg"
                   id="copyIconSvg-${h.id}"
                 >
