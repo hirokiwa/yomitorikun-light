@@ -1,6 +1,32 @@
+const alertWithWindow = (text: string) => {
+  try {
+    window.alert(text);
+    return "success"
+  } catch (e) {
+    console.error(e, "Alert failed.");
+    return "faild";
+  }
+}
+
+const getInnerWidth = () => {
+  try {
+    return window.innerWidth;
+  } catch (e) {
+    console.error(e, "Failed to get width.");
+    return 0;
+  }
+}
+
 export const viewMessage = (text: string) => {
+  if (text === "") {
+    return;
+  }
+  if (getInnerWidth() <= 900 && alertWithWindow(text) === "success") {
+    return;
+  }
   const messageBoxElement = document.querySelector<HTMLDivElement>("#messageBox");
   if (!messageBoxElement) {
+    alertWithWindow(text);
     return;
   }
 

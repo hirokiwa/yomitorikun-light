@@ -50,27 +50,27 @@
 
 .mainContents{
   width: 100%;
-  position: relative;
+  /* position: relative; */
 }
 
 @keyframes fadein {
   0% {
-     transform: translateX(150%);
+     transform: translate(-50%, -150%);
      background-position: 100%;
      animation-timing-function: ease;
-  }
-  7% {
-      transform: translateX(0);
+    }
+    7% {
+      transform: translate(-50%, 0);
       background-position: 100%;
       animation-timing-function : linear;
-  }
-  93%{
-      transform: translateX(0);
+    }
+    93%{
+      transform: translate(-50%, 0);
       background-position: 0;
       animation-timing-function : linear;
-  }
-  100%{
-      transform: translateX(150%);
+    }
+    100%{
+      transform: translate(-50%, -150%);
       background-position: 0;
       animation-timing-function: ease;
   }
@@ -78,8 +78,8 @@
 .messageBox{
   position: absolute;
   top: 1em;
-  right: 1em;
-  /* right: 1em; */
+  left: 50%;
+  margin: 0 auto;
   color: #4f4f4f;
   border: #707070 solid 0.5px;
   border-radius: 0.5em;
@@ -91,6 +91,7 @@
   align-items: center;
   background: linear-gradient(to right, #f1f1f1 50%, #ffffff 50%);
   background-size: 200% 100%;
+  width: 30em;
 }
 .messageBox:hover{
   animation-play-state: paused;
@@ -118,6 +119,7 @@
   text-align: center;
   grid-column: 4 / 13;
   overflow: hidden;
+  position: relative;
 }
 
 @media (max-width: 900px) {
