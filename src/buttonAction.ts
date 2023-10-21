@@ -1,6 +1,7 @@
 import { addHistory } from "./qrCodeHistory";
 import { getBlobFromClipboard } from "./utils/clipboard";
 import { qrBlobToString } from "./utils/qrCode";
+import { selectButtonQuery } from "./utils/querySelector";
 import { viewMessage } from "./viewMessage";
 
 const readQrCodeHandler = async () => {
@@ -25,7 +26,7 @@ const readQrCodeHandler = async () => {
     });
 }
 
-const readButton = <HTMLButtonElement|null>document.getElementById('readButton');
+const readButton = selectButtonQuery("#readButton");
 if (readButton) {
   readButton.onclick = readQrCodeHandler; 
 }
