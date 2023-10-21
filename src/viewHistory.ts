@@ -1,4 +1,5 @@
 import { wrightTextToClipboard } from "./utils/clipboard";
+import { viewMessage } from "./viewMessage";
 
 let activeTimer: historyTimerType | undefined = undefined;
 const activeTimerIs = () => activeTimer;
@@ -36,9 +37,10 @@ const unifiedCopyIconSvg = () => {
 
 const onClickHandlerForCopyLink = (historyWithId: historyWithIdType) => {
   if (wrightTextToClipboard(historyWithId.text) === "failed") {
-    alert("クリップボードにコピーできませんでした。");
+    viewMessage("クリップボードにコピーできませんでした。");
     return;
   }
+  viewMessage("クリップボードにリンクをコピーしました。");
   const svgElement = document.querySelector<SVGAElement>(`#copyIconSvg-${historyWithId.id}`);
   if (!svgElement) {
     return;

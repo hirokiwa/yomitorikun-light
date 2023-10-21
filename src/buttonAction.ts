@@ -1,11 +1,12 @@
 import { addHistory } from "./qrCodeHistory";
 import { getBlobFromClipboard } from "./utils/clipboard";
 import { qrBlobToString } from "./utils/qrCode";
+import { viewMessage } from "./viewMessage";
 
 const readQrCodeHandler = async () => {
   const qrBlob = await getBlobFromClipboard();
   if (qrBlob === null || qrBlob === "error") {
-    window.alert(qrBlob
+    viewMessage(qrBlob
       ? "クリップボードを読み取ることができませんでした。"
       : "クリップボードにQRコード画像をコピーしてください。"
     );
@@ -20,7 +21,7 @@ const readQrCodeHandler = async () => {
       }
     })
     .catch((_) => {
-      window.alert("QRコードを検出できませんでした。");
+      viewMessage("QRコードを検出できませんでした。");
     });
 }
 
