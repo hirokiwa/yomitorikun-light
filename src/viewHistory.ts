@@ -36,6 +36,15 @@ const unifiedCopyIconSvg = () => {
   ioCopyIconSvg(false, currentSvgElement);
 }
 
+const setTimer = (callback: () => void, timeout: number) => {
+  try {
+    return window.setTimeout(callback, timeout);
+  } catch (e) {
+    console.error(e, "Faild to set timer");
+    return null;
+  }
+}
+
 const onClickHandlerForCopyLink = (historyWithId: historyWithIdType) => {
   if (wrightTextToClipboard(historyWithId.text) === "failed") {
     viewMessage("クリップボードにコピーできませんでした。");
@@ -48,14 +57,16 @@ const onClickHandlerForCopyLink = (historyWithId: historyWithIdType) => {
   }
   unifiedCopyIconSvg();
   ioCopyIconSvg(true, svgElement);
-  const timerId = window.setTimeout(() => {
+  const timerId = setTimer(() => {
     ioCopyIconSvg(false, svgElement);
     setActiveTimerId(undefined);
-  }, 2000);
-  setActiveTimerId({
-    timerId: timerId,
-    historyId: historyWithId.id
-  });
+  }, 6000);
+  setActiveTimerId(timerId
+    ? {
+      timerId: timerId,
+      historyId: historyWithId.id
+    } : undefined
+  );
 }
 
 export const viewFullHistories = (history: urlHistory[]) => {
