@@ -1,4 +1,6 @@
 import { wrightTextToClipboard } from "./utils/clipboard";
+import { selectButtonQuery, selectDivQuery, selectSVGQuery } from "./utils/querySelector";
+import { createUUID } from "./utils/uuid";
 import { viewMessage } from "./viewMessage";
 
 let activeTimer: historyTimerType | undefined = undefined;
@@ -28,11 +30,20 @@ const unifiedCopyIconSvg = () => {
     return;
   }
   clearTimeout(currentTimerId.timerId);
-  const currentSvgElement = document.querySelector<SVGAElement>(`#copyIconSvg-${currentTimerId.historyId}`);
+  const currentSvgElement = selectSVGQuery(`#copyIconSvg-${currentTimerId.historyId}`);
   if (!currentSvgElement) {
     return;
   }
   ioCopyIconSvg(false, currentSvgElement);
+}
+
+const setTimer = (callback: () => void, timeout: number) => {
+  try {
+    return window.setTimeout(callback, timeout);
+  } catch (e) {
+    console.error(e, "Faild to set timer");
+    return null;
+  }
 }
 
 const onClickHandlerForCopyLink = (historyWithId: historyWithIdType) => {
@@ -41,30 +52,36 @@ const onClickHandlerForCopyLink = (historyWithId: historyWithIdType) => {
     return;
   }
   viewMessage("クリップボードにリンクをコピーしました。");
-  const svgElement = document.querySelector<SVGAElement>(`#copyIconSvg-${historyWithId.id}`);
+  const svgElement = selectSVGQuery(`#copyIconSvg-${historyWithId.id}`);
   if (!svgElement) {
     return;
   }
   unifiedCopyIconSvg();
   ioCopyIconSvg(true, svgElement);
-  const timerId = window.setTimeout(() => {
+  const timerId = setTimer(() => {
     ioCopyIconSvg(false, svgElement);
     setActiveTimerId(undefined);
-  }, 2000);
-  setActiveTimerId({
-    timerId: timerId,
-    historyId: historyWithId.id
-  });
+  }, 6000);
+  setActiveTimerId(timerId
+    ? {
+      timerId: timerId,
+      historyId: historyWithId.id
+    } : undefined
+  );
 }
 
 export const viewFullHistories = (history: urlHistory[]) => {
-  const historyWithId: historyWithIdType[] = history.map((h) => {
+  const historyElement = selectDivQuery('#historyElement');
+  if (!historyElement) {
+    return;
+  }
+  const historyWithId: historyWithIdType[] = history.map((h, i) => {
     return {
-      id: crypto.randomUUID(),
+      id: createUUID() ?? `${i}`,
       text: h.url
     }
   })
-  document.querySelector<HTMLDivElement>('#historyElement')!.innerHTML = historyWithId.length !== 0
+  historyElement.innerHTML = historyWithId.length !== 0
     ? `
       <ul class="historyUnorderedList historyChild">
         ${historyWithId.map((h, i) => {
@@ -107,7 +124,7 @@ export const viewFullHistories = (history: urlHistory[]) => {
     `
     : `<p class="historyChild">履歴はありません。</p>`;
   historyWithId.map((h) => {
-    const buttonElementToCopyLink = document.querySelector<HTMLButtonElement>(`#buttonToCopyHistoryLink-${h.id}`);
+    const buttonElementToCopyLink = selectButtonQuery(`#buttonToCopyHistoryLink-${h.id}`);
     if (!buttonElementToCopyLink) {
       return;
     }
