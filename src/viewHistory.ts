@@ -1,5 +1,6 @@
 import { wrightTextToClipboard } from "./utils/clipboard";
 import { selectButtonQuery, selectDivQuery, selectSVGQuery } from "./utils/querySelector";
+import { createUUID } from "./utils/uuid";
 import { viewMessage } from "./viewMessage";
 
 let activeTimer: historyTimerType | undefined = undefined;
@@ -74,9 +75,9 @@ export const viewFullHistories = (history: urlHistory[]) => {
   if (!historyElement) {
     return;
   }
-  const historyWithId: historyWithIdType[] = history.map((h) => {
+  const historyWithId: historyWithIdType[] = history.map((h, i) => {
     return {
-      id: crypto.randomUUID(),
+      id: createUUID() ?? `${i}`,
       text: h.url
     }
   })
