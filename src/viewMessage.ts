@@ -1,3 +1,5 @@
+import { selectDivQuery } from "./utils/querySelector";
+
 const alertWithWindow = (text: string) => {
   try {
     window.alert(text);
@@ -24,7 +26,7 @@ export const viewMessage = (text: string) => {
   if (getInnerWidth() <= 900 && alertWithWindow(text) === "success") {
     return;
   }
-  const messageBoxElement = document.querySelector<HTMLDivElement>("#messageBox");
+  const messageBoxElement = selectDivQuery("#messageBox");
   if (!messageBoxElement) {
     alertWithWindow(text);
     return;
