@@ -2,7 +2,19 @@ import { addHistory } from "./qrCodeHistory";
 import { getBlobFromClipboard } from "./utils/clipboard";
 import { qrBlobToString } from "./utils/qrCode";
 import { selectButtonQuery } from "./utils/querySelector";
+import { openWindow } from "./utils/window";
 import { viewMessage } from "./viewMessage";
+
+const openUrl = (url: string) => {
+  try {
+    if (!openWindow(url)) {
+      location.href = url;
+    }
+  } catch (e) {
+    viewMessage("URLを開けませんでした。");
+    console.error(e, "Faild to open URL");
+  }
+}
 
 const readQrCodeHandler = async () => {
   const qrBlob = await getBlobFromClipboard();
@@ -17,9 +29,7 @@ const readQrCodeHandler = async () => {
   qrBlobToString(qrBlob)
     .then((url) => {
       addHistory(url);
-      if (!window.open(url)) {
-        location.href = url;
-      }
+      openUrl(url);
     })
     .catch((_) => {
       viewMessage("QRコードを検出できませんでした。");
