@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig, splitVendorChunkPlugin } from 'vite';
 
 export default defineConfig({
   root: './', //開発ディレクトリ設定
@@ -21,9 +21,10 @@ export default defineConfig({
           }
           return `assets/${extType}/[name][extname]`;
         },
-        chunkFileNames: 'assets/js/[name].js',
+        chunkFileNames: 'assets/js/vendor/[name].js',
         entryFileNames: 'assets/js/[name].js',
       },
     },
   },
+  plugins: [splitVendorChunkPlugin()]
 });
