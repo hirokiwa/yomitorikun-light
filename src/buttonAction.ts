@@ -36,7 +36,9 @@ const readQrCodeHandler = async () => {
     });
 }
 
-const readButton = selectButtonQuery("#readButton");
-if (readButton) {
-  readButton.onclick = readQrCodeHandler; 
+export const buttonAction = () => {
+  const readButton = selectButtonQuery("#readButton");
+  if (readButton) {
+    readButton.onclick = readQrCodeHandler; 
+  }
 }
