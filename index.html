@@ -12,7 +12,8 @@
   <meta name="description" content="クリップボードにコピーされたQRコード画像を瞬時に読み取ります。PCの画面に表示されたQRコードを読み取るために渋々スマートフォンを手に取っているあなたを救います。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@450&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@450&display=swap" as="style">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@450&display=swap">
 
   <meta property="og:url" content="yomitorikun.hirokiwa.com" />
   <meta property="og:type" content="website" />
@@ -52,8 +53,8 @@
     <div class="contentsWrapper">
       <div class="bodyContent">
         <div id="messageBox"></div>
-        <button class="readButton" id="readButton" type="button" aria-label="クリップボードにコピーしたQRコード画像を読み込む"
-          title="クリップボードにコピーしたQRコード画像を読み込む">
+        <button class="readButton" id="readButton" type="button" aria-label="クリップボードにコピーしたQRコード画像を読み取ります"
+          title="クリップボードにコピーしたQRコード画像を読み取ります">
           <svg xmlns="https://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="#4f4f4f">
             <path xmlns="https://www.w3.org/200ff0/svg"
               d="M80-707v-173h173v60H140v113H80Zm0 627v-173h60v113h113v60H80Zm627 0v-60h113v-113h60v173H707Zm113-627v-113H707v-60h173v173h-60ZM708-251h63v63h-63v-63Zm0-126h63v63h-63v-63Zm-63 63h63v63h-63v-63Zm-63 63h63v63h-63v-63Zm-63-63h63v63h-63v-63Zm126-126h63v63h-63v-63Zm-63 63h63v63h-63v-63Zm-63-63h63v63h-63v-63Zm252-332v252H519v-252h252ZM440-440v252H188v-252h252Zm0-332v252H188v-252h252Zm-50 534v-152H238v152h152Zm0-332v-152H238v152h152Zm331 0v-152H569v152h152Z" />
@@ -91,8 +92,7 @@
     <p class="footerTitle">コピペでQR読み取りくん</p>
     <small>&copy; hiroki 2023</small>
   </div>
-  <script type="module" src="/src/qrCodeHistory.ts"></script>
-  <script type="module" src="/src/buttonAction.ts" defer></script>
+  <script type="module" src="/src/main.ts"></script>
 </body>
 
 </html>
