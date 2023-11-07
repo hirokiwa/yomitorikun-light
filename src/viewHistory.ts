@@ -26,7 +26,7 @@ const ioCopyIconSvg = (copied: boolean, svgElement: SVGAElement) => {
 
 const unifiedCopyIconSvg = () => {
   const currentTimerId = activeTimerIs();
-  if (!currentTimerId) {
+  if (typeof currentTimerId === "undefined") {
     return;
   }
   clearTimeout(currentTimerId.timerId);
