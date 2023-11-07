@@ -169,10 +169,12 @@
 }
 
 @media (min-width: 900px) {
+  .historyWrapper{
+    height: 80vh;
+  }
   .historyUnorderedList{
-    height: 80vh;
     overflow-y: scroll;
-    height: 80vh;
+    height: 100%;
   }
 }
 
