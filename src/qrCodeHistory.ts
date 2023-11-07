@@ -39,22 +39,25 @@ export const addHistory = (newOne: string) => {
   }
 }
 
-if ( typeof import.meta.env.VITE_LOCAL_STORAGE_KEY !== undefined ) {
-  updateCurrentHistory(getCurrentHistory() ?? []);
+export const qrCodeHistory = () => {
+  if ( typeof import.meta.env.VITE_LOCAL_STORAGE_KEY !== undefined ) {
+    updateCurrentHistory(getCurrentHistory() ?? []);
+  }
+  
+  addEventListener(
+    'DOMContentLoaded',
+    () => {viewFullHistories(currentHistory)},
+    { once: true }
+  );
+  
+  addEventListener("storage", (e: StorageEvent) => {
+    if (e.key !== import.meta.env.VITE_LOCAL_STORAGE_KEY) {
+      return;
+    }
+    const newHistoryValue = e.newValue ? extractHistory(e.newValue) : null;
+    const newHistory = newHistoryValue ?? [];
+    viewFullHistories(newHistory);
+    updateCurrentHistory(newHistory);
+  });
 }
 
-addEventListener(
-  'DOMContentLoaded',
-  () => {viewFullHistories(currentHistory)},
-  { once: true }
-);
-
-addEventListener("storage", (e) => {
-  if (e.key !== import.meta.env.VITE_LOCAL_STORAGE_KEY) {
-    return;
-  }
-  const newHistoryValue = e.newValue ? extractHistory(e.newValue) : null;
-  const newHistory = newHistoryValue ?? [];
-  viewFullHistories(newHistory);
-  updateCurrentHistory(newHistory);
-});
