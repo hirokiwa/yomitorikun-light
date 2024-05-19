@@ -276,6 +276,18 @@
   margin: 1em;
 }
 
+.linkToBuyMeACoffeeWrapper{
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
+
+.linkToBuyMeACoffee{
+  color: #707070;
+}
+.linkToBuyMeACoffee:hover{
+  opacity: 0.5;
+}
+
 @media (max-width: 35em) {
   .howToUseWrapper{
     width: 100%;
