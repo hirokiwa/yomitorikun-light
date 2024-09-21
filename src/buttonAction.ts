@@ -5,7 +5,7 @@ import { selectButtonQuery } from "./utils/querySelector";
 import { openWindow } from "./utils/window";
 import { viewMessage } from "./viewMessage";
 
-const openUrl = (url: string) => {
+export const openUrl = (url: string) => {
   try {
     if (!openWindow(url)) {
       location.href = url;
