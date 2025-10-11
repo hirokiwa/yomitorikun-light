@@ -115,11 +115,31 @@
   margin-top: 3em;
 }
 
+.rightSideContent{
+  grid-column: 10 / 13;
+  grid-row: 1 / 2;
+  min-width: 300px;
+  margin-top: 3em;
+  gap: 2em;
+  display: flex;
+  flex-direction: column;
+}
+
 .bodyContent{
   text-align: center;
-  grid-column: 4 / 13;
+  grid-column: 4 / 10;
   overflow: hidden;
   position: relative;
+}
+
+@media (max-width: 1224px) {
+  .rightSideContent{
+    display: none;
+  }
+
+  .bodyContent{
+  grid-column: 4 / 13;
+}
 }
 
 @media (max-width: 900px) {
