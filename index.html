@@ -101,10 +101,41 @@
       </div>
     </div>
   </div>
-  <div class="footer">
-    <p class="footerTitle">コピペでQR読み取りくん</p>
-    <small>&copy; hiroki 2023</small>
-  </div>
+  <footer class="footer">
+    <nav class="footer__nav" aria-label="フッターナビゲーション">
+      <ul class="footer__list">
+        <li class="footer-link-list__item">
+          <a href="/privacy" class="link-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -960 960 960" aria-hidden="true"
+              focusable="false" fill="#707070">
+              <path
+                d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 152-90.5 276.5T480-80Zm0-84q104-33 172-132t68-220v-189l-240-90-240 90v189q0 121 68 220t172 132Zm0-316Z" />
+            </svg>
+            <span class="link-item__text">プライバシーポリシー</span>
+          </a>
+        </li>
+        <li class="footer-link-list__item">
+          <a href="/contact" class="link-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -960 960 960" aria-hidden="true"
+              focusable="false" fill="#707070">
+              <path
+                d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" />
+            </svg>
+            <span class="link-item__text">お問い合わせ</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <small class="footer-copyright">
+      <span class="footer-copyright__service-name">コピペでQR読み取りくん</span>
+      <span class="footer-copyright__meta">
+        <span class="footer-copyright__symbol" aria-label="著作権">©</span>
+        <span class="footer-copyright__owner">hiroki</span>
+        <time class="footer-copyright__year" datetime="2023">2023</time>
+      </span>
+    </small>
+  </footer>
   <script type="module" src="/src/main.ts"></script>
 </body>
 
