@@ -67,22 +67,18 @@
 @keyframes fadein {
   0% {
      transform: translate(-50%, -150%);
-     background-position: 100%;
      animation-timing-function: ease;
     }
     7% {
       transform: translate(-50%, 0);
-      background-position: 100%;
       animation-timing-function : linear;
     }
     93%{
       transform: translate(-50%, 0);
-      background-position: 0;
       animation-timing-function : linear;
     }
     100%{
       transform: translate(-50%, -150%);
-      background-position: 0;
       animation-timing-function: ease;
   }
 }
@@ -100,7 +96,6 @@
   animation-duration: 6s;
   display: flex;
   align-items: center;
-  background: linear-gradient(to right, #f1f1f1 50%, #ffffff 50%);
   background-size: 200% 100%;
   width: 30em;
 }
