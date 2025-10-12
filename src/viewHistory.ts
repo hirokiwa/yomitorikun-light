@@ -93,6 +93,17 @@ export const viewFullHistories = (history: urlHistory[]) => {
                 class="historyLink"
                 title="${i + 1}番目の履歴を開く"
               >
+                <span class="historyLinkFavionWrapper" aria-hidden="true">
+                  <img
+                    src="https://www.google.com/s2/favicons?domain=${h.text}&size=32"
+                    alt=""
+                    width="20"
+                    height="20"
+                    decoding="async"
+                    loading="lazy"
+                    class="historyLinkFavion"
+                  />
+                </span>
                 ${h.text}
               </a>
               <button 
