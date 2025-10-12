@@ -122,6 +122,8 @@ export const viewFullHistories = (history: urlHistory[]) => {
                   width = "28"
                   fill = "#707070"
                   class="copyIconSvg"
+                  aria-hidden="true"
+                  focusable="false"
                   id="copyIconSvg-${h.id}"
                 >
                   <path
