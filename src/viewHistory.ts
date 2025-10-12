@@ -92,7 +92,9 @@ export const viewFullHistories = (history: urlHistory[]) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 class="historyLink"
-                title="${i + 1}番目の履歴を開く"
+                aria-label="${i + 1}番目の履歴：${new URL(h.text).hostname} を開く（新しいタブ）"
+                aria-describedby="full-url-${h.id}"
+                title="${h.text}"
               >
                 <span class="historyLinkFavionWrapper" aria-hidden="true">
                   <img
@@ -106,13 +108,13 @@ export const viewFullHistories = (history: urlHistory[]) => {
                   />
                 </span>
                 ${h.text}
-                <span class="sr-only">（新しいタブで開きます）</span>
               </a>
               <button 
                 class="buttonToCopyLink"
                 type="button"
-                title="${i + 1}番目の履歴のリンクをクリップボードにコピーする"
-                aria-label="${i + 1}番目の履歴のリンクをクリップボードにコピーする"
+                title="クリップボードにコピー"
+                aria-label="${i + 1}番目の履歴：${new URL(h.text).hostname} をクリップボードにコピーする"
+                aria-describedby="full-url-${h.id}"
                 id="buttonToCopyHistoryLink-${h.id}"
               >
                 <svg
@@ -132,6 +134,9 @@ export const viewFullHistories = (history: urlHistory[]) => {
                   />
                 </svg>
               </button>
+              <span id="full-url-${h.id}" class="sr-only">
+                URL全文:${h.text}
+              </span>
             </li>
             `)
           }).join(" ")}
