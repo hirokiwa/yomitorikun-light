@@ -90,6 +90,7 @@ export const viewFullHistories = (history: urlHistory[]) => {
               <a
                 href=${h.text}
                 target="_blank"
+                rel="noopener noreferrer"
                 class="historyLink"
                 title="${i + 1}番目の履歴を開く"
               >
