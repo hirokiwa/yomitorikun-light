@@ -106,6 +106,7 @@ export const viewFullHistories = (history: urlHistory[]) => {
                   />
                 </span>
                 ${h.text}
+                <span class="sr-only">（新しいタブで開きます）</span>
               </a>
               <button 
                 class="buttonToCopyLink"
