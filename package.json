@@ -13,6 +13,6 @@
     "vite": "^4.4.5"
   },
   "dependencies": {
-    "jsqr": "^1.4.0"
+    "@zxing/browser": "^0.1.5"
   }
 }
