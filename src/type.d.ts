@@ -9,6 +9,7 @@ interface dataFromLocalStrage {
 interface historyWithIdType {
   id: string
   text: string,
+  displayText: string,
 }
 
 interface historyTimerType {
