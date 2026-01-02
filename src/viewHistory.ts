@@ -1,4 +1,5 @@
 import { wrightTextToClipboard } from "./utils/clipboard";
+import { buildHistoryDisplayUrl } from "./utils/historyUrl";
 import { selectButtonQuery, selectDivQuery, selectSVGQuery } from "./utils/querySelector";
 import { createUUID } from "./utils/uuid";
 import { viewMessage } from "./viewMessage";
@@ -78,7 +79,8 @@ export const viewFullHistories = (history: urlHistory[]) => {
   const historyWithId: historyWithIdType[] = history.map((h, i) => {
     return {
       id: createUUID() ?? `${i}`,
-      text: h.url
+      text: h.url,
+      displayText: buildHistoryDisplayUrl(h.url)
     }
   })
   historyElement.innerHTML = historyWithId.length !== 0
@@ -107,7 +109,7 @@ export const viewFullHistories = (history: urlHistory[]) => {
                     class="historyLinkFavion"
                   />
                 </span>
-                ${h.text}
+                ${h.displayText}
               </a>
               <button 
                 class="buttonToCopyLink"
