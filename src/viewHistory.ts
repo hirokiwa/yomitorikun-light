@@ -100,7 +100,7 @@ export const viewFullHistories = (history: urlHistory[]) => {
               >
                 <span class="historyLinkFavionWrapper" aria-hidden="true">
                   <img
-                    src="https://www.google.com/s2/favicons?domain=${h.text}&size=32"
+                    src="https://www.google.com/s2/favicons?domain=${h.text}"
                     alt=""
                     width="20"
                     height="20"
