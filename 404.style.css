@@ -1,0 +1,57 @@
+.not-found {
+  box-sizing: border-box;
+  width: min(100%, 48rem);
+  margin: 0 auto;
+  padding: 6rem 1.5rem;
+  text-align: center;
+}
+
+.not-found__status {
+  margin: 0;
+  color: #4f4f4f;
+  font-size: clamp(5rem, 18vw, 10rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.not-found__title {
+  margin: 1rem 0 0;
+  color: #4f4f4f;
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+}
+
+.not-found__title-part {
+  display: inline-block;
+}
+
+.not-found__message {
+  margin: 1.5rem auto 0;
+  max-width: 36rem;
+  line-height: 1.8;
+}
+
+.not-found__message-part {
+  display: inline-block;
+}
+
+.not-found__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 2rem;
+  padding: 0.85rem 1.5rem;
+  color: #4f4f4f;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #9bf5d5;
+  border-radius: 0.5em;
+}
+
+.not-found__button svg {
+  fill: currentColor;
+}
+
+.not-found__button:hover,
+.not-found__button:focus {
+  background-color: #c9feec;
+}
