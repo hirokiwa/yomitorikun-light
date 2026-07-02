@@ -2,6 +2,7 @@ import { defineConfig, splitVendorChunkPlugin } from 'vite';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { googleAnalyticsPlugin } from './build/plugins/googleAnalytics.js';
+import { removeHtmlCommentsPlugin } from './build/plugins/removeHtmlComments.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -39,6 +40,7 @@ export default defineConfig({
   },
   plugins: [
     googleAnalyticsPlugin,
+    removeHtmlCommentsPlugin,
     splitVendorChunkPlugin(),
   ],
 });
