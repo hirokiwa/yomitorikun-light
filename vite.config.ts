@@ -3,6 +3,7 @@ import { defineConfig, splitVendorChunkPlugin } from 'vite';
 import { googleAnalyticsPlugin } from './build/vite-plugins/googleAnalytics';
 import { createLocalizedHtmlPlugin } from './build/vite-plugins/localization/plugin';
 import { removeHtmlCommentsPlugin } from './build/vite-plugins/removeHtmlComments';
+import { updateSitemapLastmodPlugin } from './build/vite-plugins/updateSitemapLastmod';
 
 const getAssetExtension = (assetName: string): string =>
   assetName.split('.').slice(-1)[0] ?? 'assets';
@@ -47,6 +48,7 @@ export default defineConfig({
     createLocalizedHtmlPlugin(),
     googleAnalyticsPlugin,
     removeHtmlCommentsPlugin,
+    updateSitemapLastmodPlugin,
     splitVendorChunkPlugin(),
   ],
 });
