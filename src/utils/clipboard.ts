@@ -11,22 +11,22 @@ export const getBlobFromClipboard = async () => {
         if (!isImage) {
           continue;
         }
-        return blob
+        return blob;
       }
     }
   } catch (e) {
     console.error(e);
-    return "error";
+    return 'error';
   }
   return null;
-}
+};
 
 export const wrightTextToClipboard = (newClipText: string) => {
   try {
     navigator.clipboard.writeText(newClipText);
-    return "success";
+    return 'success';
   } catch (e) {
     console.error(e);
-    return "failed";
+    return 'failed';
   }
 };

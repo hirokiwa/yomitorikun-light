@@ -1,0 +1,21 @@
+{
+  "meta.title": "Page not found | QR Reader via Copy and Paste",
+  "meta.description": "The page you requested could not be found. Use QR Reader via Copy and Paste from the home page.",
+  "meta.url": "https://yomitorikun.hirokiwa.com/en/404",
+  "seo.canonicalUrl": "https://yomitorikun.hirokiwa.com/en/404",
+  "seo.jaUrl": "https://yomitorikun.hirokiwa.com/404",
+  "seo.enUrl": "https://yomitorikun.hirokiwa.com/en/404",
+  "seo.defaultUrl": "https://yomitorikun.hirokiwa.com/404",
+  "notFound.localeSwitcher.ariaLabel": "Language switcher",
+  "notFound.localeSwitcher.href": "/404",
+  "notFound.localeSwitcher.label": "日本語",
+  "notFound.localeSwitcher.lang": "ja",
+  "notFound.title1": "Oops!",
+  "notFound.title2": "Page not found!",
+  "notFound.message1": "The URL may be incorrect,",
+  "notFound.message2": "or the page may have moved",
+  "notFound.message3": "or been deleted.",
+  "notFound.help1": "Try reading a QR code",
+  "notFound.help2": "from the home page.",
+  "notFound.home": "Return to the home page"
+}

@@ -1,0 +1,15 @@
+{
+  "meta.title": "Contact | QR Reader via Copy and Paste",
+  "meta.description": "Contact QR Reader via Copy and Paste with feedback, requests, or bug reports using this form.",
+  "meta.url": "https://yomitorikun.hirokiwa.com/en/contact",
+  "seo.canonicalUrl": "https://yomitorikun.hirokiwa.com/en/contact",
+  "seo.jaUrl": "https://yomitorikun.hirokiwa.com/contact",
+  "seo.enUrl": "https://yomitorikun.hirokiwa.com/en/contact",
+  "seo.defaultUrl": "https://yomitorikun.hirokiwa.com/contact",
+  "contact.localeSwitcher.ariaLabel": "Language switcher",
+  "contact.localeSwitcher.href": "/contact",
+  "contact.localeSwitcher.label": "日本語",
+  "contact.localeSwitcher.lang": "ja",
+  "contact.formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSca994E2J4bQXx1moi1VbhD3pQEKVyXGuvHlzAlwZ3WE5cbfw/viewform?embedded=true",
+  "contact.formFallback": "Loading…"
+}

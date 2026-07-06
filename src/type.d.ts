@@ -1,18 +1,18 @@
 interface urlHistory {
-  url: string
+  url: string;
 }
 
 interface dataFromLocalStrage {
-  history:urlHistory[]
+  history: urlHistory[];
 }
 
 interface historyWithIdType {
-  id: string
-  text: string,
-  displayText: string,
+  id: string;
+  text: string;
+  displayText: string;
 }
 
 interface historyTimerType {
-  timerId: number,
-  historyId: string
+  timerId: number;
+  historyId: string;
 }

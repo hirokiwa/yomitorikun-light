@@ -1,9 +1,9 @@
-import { viewFullHistories } from "./viewHistory";
+import { viewFullHistories } from './viewHistory';
 
-let currentHistory: urlHistory[] = [];
+const currentHistoryState: { value: urlHistory[] } = { value: [] };
 const updateCurrentHistory = (newHistory: urlHistory[]) => {
-  currentHistory = newHistory;
-}
+  currentHistoryState.value = newHistory;
+};
 
 const extractHistory = (rawData: string) => {
   try {
@@ -13,44 +13,48 @@ const extractHistory = (rawData: string) => {
     console.error(e);
     return null;
   }
-}
+};
 
 const getCurrentHistory = () => {
   const rawData = localStorage.getItem(import.meta.env.VITE_LOCAL_STORAGE_KEY);
-  return rawData? extractHistory(rawData) : null;
-}
+  return rawData ? extractHistory(rawData) : null;
+};
 
 export const addHistory = (newOne: string) => {
-  if (currentHistory.length > 0 && currentHistory[0].url === newOne) {
+  if (currentHistoryState.value.length > 0 && currentHistoryState.value[0].url === newOne) {
     return;
   }
-  const pushedArray: urlHistory[] = [{ url: newOne }, ...currentHistory];
-  const newHistory = pushedArray.length <= 50
-    ? pushedArray
-    : pushedArray.filter((_, index) => index < 50);
-  
+  const pushedArray: urlHistory[] = [{ url: newOne }, ...currentHistoryState.value];
+  const newHistory =
+    pushedArray.length <= 50 ? pushedArray : pushedArray.filter((_, index) => index < 50);
+
   viewFullHistories(newHistory);
   try {
     const newJsonForLocalStrage: dataFromLocalStrage = { history: newHistory };
-    localStorage.setItem(import.meta.env.VITE_LOCAL_STORAGE_KEY, JSON.stringify(newJsonForLocalStrage));
+    localStorage.setItem(
+      import.meta.env.VITE_LOCAL_STORAGE_KEY,
+      JSON.stringify(newJsonForLocalStrage),
+    );
   } catch (e) {
     console.error(e);
     return;
   }
-}
+};
 
 export const qrCodeHistory = () => {
-  if ( typeof import.meta.env.VITE_LOCAL_STORAGE_KEY !== undefined ) {
+  if (typeof import.meta.env.VITE_LOCAL_STORAGE_KEY !== 'undefined') {
     updateCurrentHistory(getCurrentHistory() ?? []);
   }
-  
+
   addEventListener(
     'DOMContentLoaded',
-    () => {viewFullHistories(currentHistory)},
-    { once: true }
+    () => {
+      viewFullHistories(currentHistoryState.value);
+    },
+    { once: true },
   );
-  
-  addEventListener("storage", (e: StorageEvent) => {
+
+  addEventListener('storage', (e: StorageEvent) => {
     if (e.key !== import.meta.env.VITE_LOCAL_STORAGE_KEY) {
       return;
     }
@@ -59,5 +63,4 @@ export const qrCodeHistory = () => {
     viewFullHistories(newHistory);
     updateCurrentHistory(newHistory);
   });
-}
-
+};

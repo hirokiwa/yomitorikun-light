@@ -1,32 +1,32 @@
-import { selectDivQuery } from "./utils/querySelector";
+import { selectDivQuery } from './utils/querySelector';
 
 const alertWithWindow = (text: string) => {
   try {
     window.alert(text);
-    return "success"
+    return 'success';
   } catch (e) {
-    console.error(e, "Alert failed.");
-    return "faild";
+    console.error(e, 'Alert failed.');
+    return 'faild';
   }
-}
+};
 
 const getInnerWidth = () => {
   try {
     return window.innerWidth;
   } catch (e) {
-    console.error(e, "Failed to get width.");
+    console.error(e, 'Failed to get width.');
     return 0;
   }
-}
+};
 
 export const viewMessage = (text: string) => {
-  if (text === "") {
+  if (text === '') {
     return;
   }
-  if (getInnerWidth() <= 900 && alertWithWindow(text) === "success") {
+  if (getInnerWidth() <= 900 && alertWithWindow(text) === 'success') {
     return;
   }
-  const messageBoxElement = selectDivQuery("#messageBox");
+  const messageBoxElement = selectDivQuery('#messageBox');
   if (!messageBoxElement) {
     alertWithWindow(text);
     return;
@@ -47,12 +47,16 @@ export const viewMessage = (text: string) => {
         <strong>${text}</strong>
       </p>
     </div>
-  `
-  messageBoxElement.addEventListener('animationend', () => {
-    while (messageBoxElement.firstChild){
-      messageBoxElement.removeChild(messageBoxElement.firstChild);
-    }
-  }, {
-    once: true
-  })
-}
+  `;
+  messageBoxElement.addEventListener(
+    'animationend',
+    () => {
+      while (messageBoxElement.firstChild) {
+        messageBoxElement.removeChild(messageBoxElement.firstChild);
+      }
+    },
+    {
+      once: true,
+    },
+  );
+};

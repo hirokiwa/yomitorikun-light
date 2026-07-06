@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="{{common.htmlLang}}">
 
 <head>
   <meta charset="UTF-8" />
@@ -9,43 +9,55 @@
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
 
-  <title>プライバシーポリシー | コピペでQR読み取りくん~PCフレンドリーなQRコードリーダー~</title>
-  <meta name="description" content="コピペでQR読み取りくんのプライバシーポリシーページです。">
+  <title>{{privacy.meta.title}}</title>
+  <meta name="description" content="{{privacy.meta.description}}">
+  <link rel="canonical" href="{{privacy.seo.canonicalUrl}}">
+  <link rel="alternate" hreflang="ja" href="{{privacy.seo.jaUrl}}">
+  <link rel="alternate" hreflang="en" href="{{privacy.seo.enUrl}}">
+  <link rel="alternate" hreflang="x-default" href="{{privacy.seo.defaultUrl}}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@450&amp;display=swap&amp;text=コピペでQR読み取りくんプライバシーポリ(以下，「当サト」といます。)は本ウェブ上提供るビスにおけユザの個人情報扱つてを定め第1条保護法う指もし生存関あっ該含れ氏名年月日住所電話番号連絡先そ他記述等よ特識別き容貌紋声かデタ健康険証者など単体位置得場合がこ照2利用目的GogleAnayticsアクセ解析:閲覧ジ端末IPドレ匿化させ状況分び改善た問わフォム前メル必要事項へ回答外らじ同意3携.広告配信三dむ業過去基づCk使や適切表示設パソナズ無効wbuf可能ン詳細–規約ごだツティッ収集4変更性有理認限行後方通知公5次掲げ除令命身財産困難衆衛向児童全育成推進国機地共団委託受務遂協力支障及ぼ員会届出手段求応停止付ず達範囲内部一併由承継伴間旨並管責任称易態6開対遅滞決権益害運営正実施著違反履歴原則7訂削自己誤続追加請判断8超え不消調査結果二多額費代べ措替策講9途載0願hrE-m@©">
+  <link rel="stylesheet" href="{{fonts.stylesheetUrl}}">
 
-  <meta property="og:url" content="yomitorikun.hirokiwa.com" />
+  <meta property="og:url" content="{{privacy.seo.canonicalUrl}}" />
   <meta property="og:type" content="website" />
-  <meta property="og:locale" content="ja_JP">
-  <meta property="og:title" content="プライバシーポリシー | コピペでQR読み取りくん~PCフレンドリーなQRコードリーダー~" />
-  <meta property="og:description" content="コピペでQR読み取りくんのプライバシーポリシーページです。" />
-  <meta property="og:site_name" content="プライバシーポリシー | コピペでQR読み取りくん~PCフレンドリーなQRコードリーダー~" />
+  <meta property="og:locale" content="{{common.ogLocale}}">
+  <meta property="og:title" content="{{privacy.meta.title}}" />
+  <meta property="og:description" content="{{privacy.meta.description}}" />
+  <meta property="og:site_name" content="{{common.brandName}}" />
   <meta property="og:image"
     content="https://github-production-user-asset-6210df.s3.amazonaws.com/89170014/275133791-23c5e55f-afea-40d1-9d24-b43e4738dd22.png" />
   <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:alt" content="コピペでQR読み取りくん">
+  <meta property="og:image:alt" content="{{common.brandAlt}}">
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:creator" content="@hirokiwasan" />
-  <meta name="twitter:title" content="プライバシーポリシー | コピペでQR読み取りくん~PCフレンドリーなQRコードリーダー~">
-  <meta name="twitter:description" content="コピペでQR読み取りくんのプライバシーポリシーページです。" />
+  <meta name="twitter:title" content="{{privacy.meta.title}}">
+  <meta name="twitter:description" content="{{privacy.meta.description}}" />
   <meta name="twitter:image"
     content="https://github-production-user-asset-6210df.s3.amazonaws.com/89170014/275133791-23c5e55f-afea-40d1-9d24-b43e4738dd22.png" />
   <meta name="twitter:image:type" content="image/jpeg">
-  <meta name="twitter:image:alt" content="コピペでQR読み取りくん">
+  <meta name="twitter:image:alt" content="{{common.brandAlt}}">
 
   <meta data-build-placeholder="google-analytics">
 </head>
 
 <body class="body">
   <header class="header">
-    <a href="/" class="titleLink" title="トップページを読み込む">
+    <a href="{{common.homeHref}}" class="titleLink" title="{{common.homeTitle}}">
       <div class="titleLinkInner">
-        <img src="/logo.png" alt="アイコン" class="iconImage">
-        <h1 class="title">コピペでQR読み取りくん</h1>
+        <img src="/logo.png" alt="{{common.iconAlt}}" class="iconImage">
+        <h1 class="title">{{common.brandName}}</h1>
       </div>
     </a>
+    <nav class="locale-switcher" aria-label="{{privacy.localeSwitcher.ariaLabel}}">
+      <a class="locale-switcher__link" href="{{privacy.localeSwitcher.href}}" hreflang="{{privacy.localeSwitcher.lang}}" lang="{{privacy.localeSwitcher.lang}}">
+        <svg class="locale-switcher__icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false">
+          <path d="M325-111.5q-73-31.5-127.5-86t-86-127.5Q80-398 80-480.5t31.5-155q31.5-72.5 86-127t127.5-86Q398-880 480.5-880t155 31.5q72.5 31.5 127 86t86 127Q880-563 880-480.5T848.5-325q-31.5 73-86 127.5t-127 86Q563-80 480.5-80T325-111.5ZM480-162q26-36 45-75t31-83H404q12 44 31 83t45 75Zm-104-16q-18-33-31.5-68.5T322-320H204q29 50 72.5 87t99.5 55Zm208 0q56-18 99.5-55t72.5-87H638q-9 38-22.5 73.5T584-178ZM170-400h136q-5-40-5-80t5-80H170q-10 40-10 80t10 80Zm216 0h188q6-40 6-80t-6-80H386q-6 40-6 80t6 80Zm268 0h136q10-40 10-80t-10-80H654q5 40 5 80t-5 80ZM638-640h118q-29-50-72.5-87T584-782q36 66 54 142Zm-234 0h152q-24-88-76-158-52 70-76 158Zm-200 0h118q18-76 54-142-56 18-99.5 55T204-640Z"/>
+        </svg>
+        <span class="locale-switcher__label">{{privacy.localeSwitcher.label}}</span>
+      </a>
+    </nav>
   </header>
 
   <main class="main-contents">
@@ -225,35 +237,35 @@
       </section>
   </main>
   <footer class="footer">
-    <nav class="footer__nav" aria-label="フッターナビゲーション">
+    <nav class="footer__nav" aria-label="{{common.footerAriaLabel}}">
       <ul class="footer__list">
         <li class="footer-link-list__item">
-          <a href="/privacy" class="link-item">
+          <a href="{{common.privacyHref}}" class="link-item" aria-current="page">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -960 960 960" aria-hidden="true"
               focusable="false" fill="#707070">
               <path
                 d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 152-90.5 276.5T480-80Zm0-84q104-33 172-132t68-220v-189l-240-90-240 90v189q0 121 68 220t172 132Zm0-316Z" />
             </svg>
-            <span class="link-item__text">プライバシーポリシー</span>
+            <span class="link-item__text">{{common.privacyLabel}}</span>
           </a>
         </li>
         <li class="footer-link-list__item">
-          <a href="/contact" class="link-item">
+          <a href="{{common.contactHref}}" class="link-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -960 960 960" aria-hidden="true"
               focusable="false" fill="#707070">
               <path
                 d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" />
             </svg>
-            <span class="link-item__text">お問い合わせ</span>
+            <span class="link-item__text">{{common.contactLabel}}</span>
           </a>
         </li>
       </ul>
     </nav>
 
     <small class="footer-copyright">
-      <span class="footer-copyright__service-name">コピペでQR読み取りくん</span>
+      <span class="footer-copyright__service-name">{{common.brandName}}</span>
       <span class="footer-copyright__meta">
-        <span class="footer-copyright__symbol" aria-label="著作権">©</span>
+        <span class="footer-copyright__symbol" aria-label="{{common.copyrightAriaLabel}}">©</span>
         <span class="footer-copyright__owner">hiroki</span>
         <time class="footer-copyright__year" datetime="2023">2023</time>
       </span>
