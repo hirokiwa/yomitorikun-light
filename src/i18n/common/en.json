@@ -1,0 +1,15 @@
+{
+  "common.htmlLang": "en",
+  "common.ogLocale": "en_US",
+  "common.brandName": "QR Reader via Copy and Paste",
+  "common.brandAlt": "QR Reader via Copy and Paste",
+  "common.iconAlt": "QR Reader icon",
+  "common.homeHref": "/en",
+  "common.homeTitle": "Open the home page",
+  "common.privacyHref": "/en/privacy",
+  "common.privacyLabel": "Privacy Policy",
+  "common.contactHref": "/en/contact",
+  "common.contactLabel": "Contact",
+  "common.footerAriaLabel": "Footer navigation",
+  "common.copyrightAriaLabel": "Copyright"
+}

@@ -1,13 +1,14 @@
 import { wrightTextToClipboard } from "./utils/clipboard";
+import { getDocumentMessages } from "./i18n/runtime";
 import { buildHistoryDisplayUrl } from "./utils/historyUrl";
 import { selectButtonQuery, selectDivQuery, selectSVGQuery } from "./utils/querySelector";
 import { createUUID } from "./utils/uuid";
 import { viewMessage } from "./viewMessage";
 
-let activeTimer: historyTimerType | undefined = undefined;
-const activeTimerIs = () => activeTimer;
+const activeTimerState: { value: historyTimerType | undefined } = { value: undefined };
+const activeTimerIs = () => activeTimerState.value;
 const setActiveTimerId = (newTimer: historyTimerType | undefined) => {
-  activeTimer = newTimer;
+  activeTimerState.value = newTimer;
 }
 
 const ioCopyIconSvg = (copied: boolean, svgElement: SVGAElement) => {
@@ -48,11 +49,12 @@ const setTimer = (callback: () => void, timeout: number) => {
 }
 
 const onClickHandlerForCopyLink = (historyWithId: historyWithIdType) => {
+  const localizedMessages = getDocumentMessages();
   if (wrightTextToClipboard(historyWithId.text) === "failed") {
-    viewMessage("クリップボードにコピーできませんでした。");
+    viewMessage(localizedMessages.copyFailed);
     return;
   }
-  viewMessage("クリップボードにリンクをコピーしました。");
+  viewMessage(localizedMessages.copySucceeded);
   const svgElement = selectSVGQuery(`#copyIconSvg-${historyWithId.id}`);
   if (!svgElement) {
     return;
@@ -72,6 +74,7 @@ const onClickHandlerForCopyLink = (historyWithId: historyWithIdType) => {
 }
 
 export const viewFullHistories = (history: urlHistory[]) => {
+  const localizedMessages = getDocumentMessages();
   const historyElement = selectDivQuery('#historyElement');
   if (!historyElement) {
     return;
@@ -94,7 +97,7 @@ export const viewFullHistories = (history: urlHistory[]) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 class="historyLink"
-                aria-label="${i + 1}番目の履歴：${new URL(h.text).hostname} を開く（新しいタブ）"
+                aria-label="${localizedMessages.openHistoryLabel(i + 1, new URL(h.text).hostname)}"
                 aria-describedby="full-url-${h.id}"
                 title="${h.text}"
               >
@@ -114,8 +117,8 @@ export const viewFullHistories = (history: urlHistory[]) => {
               <button 
                 class="buttonToCopyLink"
                 type="button"
-                title="クリップボードにコピー"
-                aria-label="${i + 1}番目の履歴：${new URL(h.text).hostname} をクリップボードにコピーする"
+                title="${localizedMessages.copyTitle}"
+                aria-label="${localizedMessages.copyHistoryLabel(i + 1, new URL(h.text).hostname)}"
                 aria-describedby="full-url-${h.id}"
                 id="buttonToCopyHistoryLink-${h.id}"
               >
@@ -137,14 +140,14 @@ export const viewFullHistories = (history: urlHistory[]) => {
                 </svg>
               </button>
               <span id="full-url-${h.id}" class="sr-only">
-                URL全文:${h.text}
+                ${localizedMessages.fullUrlLabel}:${h.text}
               </span>
             </li>
             `)
           }).join(" ")}
       </ul>
     `
-    : `<p class="historyChild">履歴はありません。</p>`;
+    : `<p class="historyChild">${localizedMessages.historyEmpty}</p>`;
   historyWithId.map((h) => {
     const buttonElementToCopyLink = selectButtonQuery(`#buttonToCopyHistoryLink-${h.id}`);
     if (!buttonElementToCopyLink) {

@@ -1,0 +1,21 @@
+{
+  "meta.title": "QR Reader via Copy and Paste | A PC-friendly QR code reader",
+  "meta.description": "Instantly read a QR code image copied to your clipboard. Scan QR codes shown on your PC without reaching for your smartphone.",
+  "meta.url": "https://yomitorikun.hirokiwa.com/en",
+  "seo.canonicalUrl": "https://yomitorikun.hirokiwa.com/en",
+  "seo.jaUrl": "https://yomitorikun.hirokiwa.com",
+  "seo.enUrl": "https://yomitorikun.hirokiwa.com/en",
+  "seo.defaultUrl": "https://yomitorikun.hirokiwa.com",
+  "home.localeSwitcher.ariaLabel": "Language switcher",
+  "home.localeSwitcher.href": "/",
+  "home.localeSwitcher.label": "日本語",
+  "home.localeSwitcher.lang": "ja",
+  "home.readLabel": "Scan the QR code image copied to the clipboard",
+  "home.readText": "Scan",
+  "home.howToUse": "How to use",
+  "home.step1": "Copy a QR code image to the clipboard",
+  "home.step2": "Press the “Scan” button to open it",
+  "home.supportTitle": "Support the developer on Buy Me a Coffee",
+  "home.supportText": "☕️ Support the developer on Buy Me a Coffee",
+  "home.history": "History"
+}
