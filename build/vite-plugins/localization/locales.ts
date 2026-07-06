@@ -57,9 +57,8 @@ const mergeLocaleMessages = (
   pageMessages: LocaleMessages,
 ): LocaleMessages => ({ ...commonMessages, ...pageMessages });
 
-const getUniqueMessageCharacters = (messages: LocaleMessages): string => (
-  [...new Set(Object.values(messages).join('').replace(/\s/g, ''))].join('')
-);
+const getUniqueMessageCharacters = (messages: LocaleMessages): string =>
+  [...new Set(Object.values(messages).join('').replace(/\s/g, ''))].join('');
 
 const createGoogleFontsStylesheetUrl = (messages: LocaleMessages): string => {
   const characters = encodeURIComponent(getUniqueMessageCharacters(messages));
@@ -80,25 +79,33 @@ const readLocaleMessages = async (
 };
 
 export const loadLocaleDefinitions = async (): Promise<LocaleDefinition[]> => {
-  const commonEntries = await Promise.all(localeCodes.map(async (localeCode) =>
-    [localeCode, await readLocaleMessages('common', localeCode)] as const));
+  const commonEntries = await Promise.all(
+    localeCodes.map(
+      async (localeCode) => [localeCode, await readLocaleMessages('common', localeCode)] as const,
+    ),
+  );
   const commonMessages = Object.fromEntries(commonEntries) as Record<LocaleCode, LocaleMessages>;
 
-  return Promise.all(localizedPages.flatMap((page) => localeCodes.map(async (localeCode) => {
-    const pageMessages = await readLocaleMessages(page.pageId, localeCode);
-    const mergedMessages = mergeLocaleMessages(commonMessages[localeCode], pageMessages);
-    const sourceMessages = localeCode === 'en'
-      ? mergeLocaleMessages(commonMessages.ja, await readLocaleMessages(page.pageId, 'ja'))
-      : undefined;
-    return {
-      code: localeCode,
-      htmlLang: localeCode,
-      outputPath: page.locales[localeCode].outputPath,
-      pagePath: page.locales[localeCode].pagePath,
-      pageId: page.pageId,
-      templatePath: page.templatePath,
-      messages: addGoogleFontsStylesheetUrl(mergedMessages),
-      sourceMessages,
-    };
-  })));
+  return Promise.all(
+    localizedPages.flatMap((page) =>
+      localeCodes.map(async (localeCode) => {
+        const pageMessages = await readLocaleMessages(page.pageId, localeCode);
+        const mergedMessages = mergeLocaleMessages(commonMessages[localeCode], pageMessages);
+        const sourceMessages =
+          localeCode === 'en'
+            ? mergeLocaleMessages(commonMessages.ja, await readLocaleMessages(page.pageId, 'ja'))
+            : undefined;
+        return {
+          code: localeCode,
+          htmlLang: localeCode,
+          outputPath: page.locales[localeCode].outputPath,
+          pagePath: page.locales[localeCode].pagePath,
+          pageId: page.pageId,
+          templatePath: page.templatePath,
+          messages: addGoogleFontsStylesheetUrl(mergedMessages),
+          sourceMessages,
+        };
+      }),
+    ),
+  );
 };

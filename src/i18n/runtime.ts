@@ -25,7 +25,8 @@ const messages: Record<RuntimeLocale, RuntimeMessages> = {
     historyEmpty: '履歴はありません。',
     fullUrlLabel: 'URL全文',
     copyTitle: 'クリップボードにコピー',
-    openHistoryLabel: (position, hostname) => `${position}番目の履歴：${hostname} を開く（新しいタブ）`,
+    openHistoryLabel: (position, hostname) =>
+      `${position}番目の履歴：${hostname} を開く（新しいタブ）`,
     copyHistoryLabel: (position, hostname) =>
       `${position}番目の履歴：${hostname} をクリップボードにコピーする`,
   },

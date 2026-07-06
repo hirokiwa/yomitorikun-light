@@ -1,10 +1,10 @@
-import { getDocumentMessages } from "./i18n/runtime";
-import { addHistory } from "./qrCodeHistory";
-import { getBlobFromClipboard } from "./utils/clipboard";
-import { qrBlobToString } from "./utils/qrCode";
-import { selectButtonQuery } from "./utils/querySelector";
-import { openWindow } from "./utils/window";
-import { viewMessage } from "./viewMessage";
+import { getDocumentMessages } from './i18n/runtime';
+import { addHistory } from './qrCodeHistory';
+import { getBlobFromClipboard } from './utils/clipboard';
+import { qrBlobToString } from './utils/qrCode';
+import { selectButtonQuery } from './utils/querySelector';
+import { openWindow } from './utils/window';
+import { viewMessage } from './viewMessage';
 
 export const openUrl = (url: string) => {
   try {
@@ -13,18 +13,15 @@ export const openUrl = (url: string) => {
     }
   } catch (error) {
     viewMessage(getDocumentMessages().openUrlFailed);
-    console.error(error, "Failed to open URL");
+    console.error(error, 'Failed to open URL');
   }
 };
 
 const readQrCodeHandler = async () => {
   const localizedMessages = getDocumentMessages();
   const qrBlob = await getBlobFromClipboard();
-  if (qrBlob === null || qrBlob === "error") {
-    viewMessage(qrBlob
-      ? localizedMessages.clipboardReadFailed
-      : localizedMessages.clipboardEmpty
-    );
+  if (qrBlob === null || qrBlob === 'error') {
+    viewMessage(qrBlob ? localizedMessages.clipboardReadFailed : localizedMessages.clipboardEmpty);
     return;
   }
 
@@ -39,8 +36,8 @@ const readQrCodeHandler = async () => {
 };
 
 export const buttonAction = () => {
-  const readButton = selectButtonQuery("#readButton");
+  const readButton = selectButtonQuery('#readButton');
   if (readButton) {
-    readButton.onclick = readQrCodeHandler; 
+    readButton.onclick = readQrCodeHandler;
   }
 };

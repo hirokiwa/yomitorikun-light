@@ -1,4 +1,4 @@
-const prefixesToOmit = ["https://www.", "http://www.", "https://", "http://"];
+const prefixesToOmit = ['https://www.', 'http://www.', 'https://', 'http://'];
 
 export const buildHistoryDisplayUrl = (url: string) => {
   return prefixesToOmit.reduce((formattedUrl, prefix) => {

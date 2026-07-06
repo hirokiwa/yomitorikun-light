@@ -4,7 +4,8 @@ import { googleAnalyticsPlugin } from './build/vite-plugins/googleAnalytics';
 import { createLocalizedHtmlPlugin } from './build/vite-plugins/localization/plugin';
 import { removeHtmlCommentsPlugin } from './build/vite-plugins/removeHtmlComments';
 
-const getAssetExtension = (assetName: string): string => assetName.split('.').slice(-1)[0] ?? 'assets';
+const getAssetExtension = (assetName: string): string =>
+  assetName.split('.').slice(-1)[0] ?? 'assets';
 
 const getAssetDirectory = (extension: string): string => {
   if (/ttf|otf|eot|woff|woff2/i.test(extension)) {

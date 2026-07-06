@@ -1,34 +1,34 @@
-import { wrightTextToClipboard } from "./utils/clipboard";
-import { getDocumentMessages } from "./i18n/runtime";
-import { buildHistoryDisplayUrl } from "./utils/historyUrl";
-import { selectButtonQuery, selectDivQuery, selectSVGQuery } from "./utils/querySelector";
-import { createUUID } from "./utils/uuid";
-import { viewMessage } from "./viewMessage";
+import { wrightTextToClipboard } from './utils/clipboard';
+import { getDocumentMessages } from './i18n/runtime';
+import { buildHistoryDisplayUrl } from './utils/historyUrl';
+import { selectButtonQuery, selectDivQuery, selectSVGQuery } from './utils/querySelector';
+import { createUUID } from './utils/uuid';
+import { viewMessage } from './viewMessage';
 
 const activeTimerState: { value: historyTimerType | undefined } = { value: undefined };
 const activeTimerIs = () => activeTimerState.value;
 const setActiveTimerId = (newTimer: historyTimerType | undefined) => {
   activeTimerState.value = newTimer;
-}
+};
 
 const ioCopyIconSvg = (copied: boolean, svgElement: SVGAElement) => {
-  while (svgElement.firstChild){
+  while (svgElement.firstChild) {
     svgElement.removeChild(svgElement.firstChild);
   }
   svgElement.innerHTML = copied
-  ? `<path
+    ? `<path
       xmlns="http://www.w3.org/2000/svg"
       d="m490-383 228-228-42-41-185 186-97-97-42 42 138 138ZM260-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h560q24 0 42 18t18 42v560q0 24-18 42t-42 18H260Zm0-60h560v-560H260v560ZM140-80q-24 0-42-18t-18-42v-620h60v620h620v60H140Zm120-740v560-560Z"
     />`
-  : `<path
+    : `<path
       xmlns="http://www.w3.org/2000/svg"
       d="M180-81q-24 0-42-18t-18-42v-603h60v603h474v60H180Zm120-120q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300Zm0-60h440v-560H300v560Zm0 0v-560 560Z"
     />`;
-}
+};
 
 const unifiedCopyIconSvg = () => {
   const currentTimerId = activeTimerIs();
-  if (typeof currentTimerId === "undefined") {
+  if (typeof currentTimerId === 'undefined') {
     return;
   }
   clearTimeout(currentTimerId.timerId);
@@ -37,20 +37,20 @@ const unifiedCopyIconSvg = () => {
     return;
   }
   ioCopyIconSvg(false, currentSvgElement);
-}
+};
 
 const setTimer = (callback: () => void, timeout: number) => {
   try {
     return window.setTimeout(callback, timeout);
   } catch (e) {
-    console.error(e, "Faild to set timer");
+    console.error(e, 'Faild to set timer');
     return null;
   }
-}
+};
 
 const onClickHandlerForCopyLink = (historyWithId: historyWithIdType) => {
   const localizedMessages = getDocumentMessages();
-  if (wrightTextToClipboard(historyWithId.text) === "failed") {
+  if (wrightTextToClipboard(historyWithId.text) === 'failed') {
     viewMessage(localizedMessages.copyFailed);
     return;
   }
@@ -65,13 +65,15 @@ const onClickHandlerForCopyLink = (historyWithId: historyWithIdType) => {
     ioCopyIconSvg(false, svgElement);
     setActiveTimerId(undefined);
   }, 6000);
-  setActiveTimerId(timerId
-    ? {
-      timerId: timerId,
-      historyId: historyWithId.id
-    } : undefined
+  setActiveTimerId(
+    timerId
+      ? {
+          timerId: timerId,
+          historyId: historyWithId.id,
+        }
+      : undefined,
   );
-}
+};
 
 export const viewFullHistories = (history: urlHistory[]) => {
   const localizedMessages = getDocumentMessages();
@@ -83,14 +85,16 @@ export const viewFullHistories = (history: urlHistory[]) => {
     return {
       id: createUUID() ?? `${i}`,
       text: h.url,
-      displayText: buildHistoryDisplayUrl(h.url)
-    }
-  })
-  historyElement.innerHTML = historyWithId.length !== 0
-    ? `
+      displayText: buildHistoryDisplayUrl(h.url),
+    };
+  });
+  historyElement.innerHTML =
+    historyWithId.length !== 0
+      ? `
       <ul class="historyUnorderedList historyChild">
-        ${historyWithId.map((h, i) => {
-          return (`
+        ${historyWithId
+          .map((h, i) => {
+            return `
             <li class="historyList" key="historyList-${h.id}">
               <a
                 href=${h.text}
@@ -143,16 +147,19 @@ export const viewFullHistories = (history: urlHistory[]) => {
                 ${localizedMessages.fullUrlLabel}:${h.text}
               </span>
             </li>
-            `)
-          }).join(" ")}
+            `;
+          })
+          .join(' ')}
       </ul>
     `
-    : `<p class="historyChild">${localizedMessages.historyEmpty}</p>`;
+      : `<p class="historyChild">${localizedMessages.historyEmpty}</p>`;
   historyWithId.map((h) => {
     const buttonElementToCopyLink = selectButtonQuery(`#buttonToCopyHistoryLink-${h.id}`);
     if (!buttonElementToCopyLink) {
       return;
     }
-    buttonElementToCopyLink.onclick = () => { onClickHandlerForCopyLink(h) };
+    buttonElementToCopyLink.onclick = () => {
+      onClickHandlerForCopyLink(h);
+    };
   });
-}
+};

@@ -1,4 +1,4 @@
-import { BrowserQRCodeReader } from "@zxing/browser";
+import { BrowserQRCodeReader } from '@zxing/browser';
 
 const qrCodeReader = new BrowserQRCodeReader();
 
