@@ -1,0 +1,15 @@
+{
+  "common.htmlLang": "ja",
+  "common.ogLocale": "ja_JP",
+  "common.brandName": "コピペでQR読み取りくん",
+  "common.brandAlt": "コピペでQR読み取りくん",
+  "common.iconAlt": "アイコン",
+  "common.homeHref": "/",
+  "common.homeTitle": "トップページを読み込む",
+  "common.privacyHref": "/privacy",
+  "common.privacyLabel": "プライバシーポリシー",
+  "common.contactHref": "/contact",
+  "common.contactLabel": "お問い合わせ",
+  "common.footerAriaLabel": "フッターナビゲーション",
+  "common.copyrightAriaLabel": "著作権"
+}

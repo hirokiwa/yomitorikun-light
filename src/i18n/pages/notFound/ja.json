@@ -1,0 +1,21 @@
+{
+  "meta.title": "ページが見つかりません | コピペでQR読み取りくん",
+  "meta.description": "お探しのページは見つかりませんでした。トップページからコピペでQR読み取りくんをご利用ください。",
+  "meta.url": "https://yomitorikun.hirokiwa.com/404",
+  "seo.canonicalUrl": "https://yomitorikun.hirokiwa.com/404",
+  "seo.jaUrl": "https://yomitorikun.hirokiwa.com/404",
+  "seo.enUrl": "https://yomitorikun.hirokiwa.com/en/404",
+  "seo.defaultUrl": "https://yomitorikun.hirokiwa.com/404",
+  "notFound.localeSwitcher.ariaLabel": "言語切替",
+  "notFound.localeSwitcher.href": "/en/404",
+  "notFound.localeSwitcher.label": "English",
+  "notFound.localeSwitcher.lang": "en",
+  "notFound.title1": "うわ！",
+  "notFound.title2": "ページが見つからない！",
+  "notFound.message1": "URLが間違っているか、",
+  "notFound.message2": "ページが移動または削除された",
+  "notFound.message3": "可能性があります。",
+  "notFound.help1": "トップページからQRコードの読み取りを",
+  "notFound.help2": "お試しください。",
+  "notFound.home": "トップページへ戻る"
+}

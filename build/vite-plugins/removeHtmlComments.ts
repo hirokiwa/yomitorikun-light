@@ -1,4 +1,6 @@
-export const removeHtmlCommentsPlugin = {
+import type { Plugin } from 'vite';
+
+export const removeHtmlCommentsPlugin: Plugin = {
   name: 'remove-html-comments',
   apply: 'build',
   transformIndexHtml: {

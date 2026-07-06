@@ -1,0 +1,21 @@
+{
+  "meta.title": "コピペでQR読み取りくん~PCフレンドリーなQRコードリーダー~",
+  "meta.description": "クリップボードにコピーされたQRコード画像を瞬時に読み取ります。PCの画面に表示されたQRコードを読み取るために渋々スマートフォンを手に取っているあなたを救います。",
+  "meta.url": "https://yomitorikun.hirokiwa.com",
+  "seo.canonicalUrl": "https://yomitorikun.hirokiwa.com",
+  "seo.jaUrl": "https://yomitorikun.hirokiwa.com",
+  "seo.enUrl": "https://yomitorikun.hirokiwa.com/en",
+  "seo.defaultUrl": "https://yomitorikun.hirokiwa.com",
+  "home.localeSwitcher.ariaLabel": "言語切替",
+  "home.localeSwitcher.href": "/en",
+  "home.localeSwitcher.label": "English",
+  "home.localeSwitcher.lang": "en",
+  "home.readLabel": "クリップボードにコピーしたQRコード画像を読み取ります",
+  "home.readText": "読み取り",
+  "home.howToUse": "使い方",
+  "home.step1": "クリップボードにQRコード画像をコピー",
+  "home.step2": "「読み取り」ボタンを押して開く",
+  "home.supportTitle": "Buy me a coffee で開発者を支援する",
+  "home.supportText": "☕️ Buy me a coffee で開発者を支援する",
+  "home.history": "履歴"
+}

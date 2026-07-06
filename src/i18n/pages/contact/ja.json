@@ -1,0 +1,15 @@
+{
+  "meta.title": "お問い合わせ | コピペでQR読み取りくん~PCフレンドリーなQRコードリーダー~",
+  "meta.description": "コピペでQR読み取りくんのお問い合わせページです。ご意見・ご要望・不具合のご報告などは、こちらのフォームからご連絡いただけます。",
+  "meta.url": "https://yomitorikun.hirokiwa.com/contact",
+  "seo.canonicalUrl": "https://yomitorikun.hirokiwa.com/contact",
+  "seo.jaUrl": "https://yomitorikun.hirokiwa.com/contact",
+  "seo.enUrl": "https://yomitorikun.hirokiwa.com/en/contact",
+  "seo.defaultUrl": "https://yomitorikun.hirokiwa.com/contact",
+  "contact.localeSwitcher.ariaLabel": "言語切替",
+  "contact.localeSwitcher.href": "/en/contact",
+  "contact.localeSwitcher.label": "English",
+  "contact.localeSwitcher.lang": "en",
+  "contact.formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdbkbEwyKK0yWvsctFc8ITAIsJqB7AmhSDrdSs9b0oeJZxY1Q/viewform?embedded=true",
+  "contact.formFallback": "読み込み中…"
+}
