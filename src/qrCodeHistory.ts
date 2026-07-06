@@ -1,8 +1,8 @@
 import { viewFullHistories } from "./viewHistory";
 
-let currentHistory: urlHistory[] = [];
+const currentHistoryState: { value: urlHistory[] } = { value: [] };
 const updateCurrentHistory = (newHistory: urlHistory[]) => {
-  currentHistory = newHistory;
+  currentHistoryState.value = newHistory;
 }
 
 const extractHistory = (rawData: string) => {
@@ -21,10 +21,10 @@ const getCurrentHistory = () => {
 }
 
 export const addHistory = (newOne: string) => {
-  if (currentHistory.length > 0 && currentHistory[0].url === newOne) {
+  if (currentHistoryState.value.length > 0 && currentHistoryState.value[0].url === newOne) {
     return;
   }
-  const pushedArray: urlHistory[] = [{ url: newOne }, ...currentHistory];
+  const pushedArray: urlHistory[] = [{ url: newOne }, ...currentHistoryState.value];
   const newHistory = pushedArray.length <= 50
     ? pushedArray
     : pushedArray.filter((_, index) => index < 50);
@@ -40,13 +40,13 @@ export const addHistory = (newOne: string) => {
 }
 
 export const qrCodeHistory = () => {
-  if ( typeof import.meta.env.VITE_LOCAL_STORAGE_KEY !== undefined ) {
+  if (typeof import.meta.env.VITE_LOCAL_STORAGE_KEY !== 'undefined') {
     updateCurrentHistory(getCurrentHistory() ?? []);
   }
   
   addEventListener(
     'DOMContentLoaded',
-    () => {viewFullHistories(currentHistory)},
+    () => {viewFullHistories(currentHistoryState.value)},
     { once: true }
   );
   
@@ -60,4 +60,3 @@ export const qrCodeHistory = () => {
     updateCurrentHistory(newHistory);
   });
 }
-

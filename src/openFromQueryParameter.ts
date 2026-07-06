@@ -15,8 +15,10 @@ const getUrlFromQuery = () => {
 
 export const openFromQueryParameter = () => {
   const urlToOpen = getUrlFromQuery();
-  urlToOpen && addHistory(urlToOpen);
-  urlToOpen && openUrl(urlToOpen);
+  if (urlToOpen) {
+    addHistory(urlToOpen);
+    openUrl(urlToOpen);
+  }
 
   return urlToOpen !== null;
 };
