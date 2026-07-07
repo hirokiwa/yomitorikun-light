@@ -88,6 +88,35 @@
       <div class="contentsWrapper">
         <div class="bodyContent">
           <div id="messageBox"></div>
+          <dialog class="plain-text-dialog" id="plainTextDialog">
+            <div class="plain-text-dialog__inner">
+              <p class="plain-text-dialog__text" id="plainTextDialogText"></p>
+              <button
+                class="plain-text-dialog__copy-button"
+                id="plainTextDialogCopyButton"
+                type="button"
+              >
+                <svg
+                  class="plain-text-dialog__copy-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 -960 960 960"
+                  width="24"
+                  aria-hidden="true"
+                  focusable="false"
+                  id="plainTextDialogCopyIcon"
+                >
+                  <path
+                    d="M180-81q-24 0-42-18t-18-42v-603h60v603h474v60H180Zm120-120q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300Zm0-60h440v-560H300v560Zm0 0v-560 560Z"
+                  />
+                </svg>
+                <span
+                  class="plain-text-dialog__copy-button-text"
+                  id="plainTextDialogCopyButtonText"
+                ></span>
+              </button>
+            </div>
+          </dialog>
           <button
             class="readButton"
             id="readButton"

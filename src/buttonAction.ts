@@ -3,8 +3,10 @@ import { addHistory } from './qrCodeHistory';
 import { getBlobFromClipboard } from './utils/clipboard';
 import { qrBlobToString } from './utils/qrCode';
 import { selectButtonQuery } from './utils/querySelector';
+import { isHttpUrl } from './utils/url';
 import { openWindow } from './utils/window';
 import { viewMessage } from './viewMessage';
+import { viewPlainTextDialog } from './viewPlainTextDialog';
 
 export const openUrl = (url: string) => {
   try {
@@ -17,6 +19,11 @@ export const openUrl = (url: string) => {
   }
 };
 
+const handleDecodedQrText = (text: string) => {
+  addHistory(text);
+  isHttpUrl(text) ? openUrl(text) : viewPlainTextDialog(text);
+};
+
 const readQrCodeHandler = async () => {
   const localizedMessages = getDocumentMessages();
   const qrBlob = await getBlobFromClipboard();
@@ -26,10 +33,7 @@ const readQrCodeHandler = async () => {
   }
 
   qrBlobToString(qrBlob)
-    .then((url) => {
-      addHistory(url);
-      openUrl(url);
-    })
+    .then(handleDecodedQrText)
     .catch(() => {
       viewMessage(localizedMessages.qrNotFound);
     });
