@@ -1,3 +1,4 @@
+import { createMockHistory } from './mockHistory';
 import { viewFullHistories } from './viewHistory';
 
 const currentHistoryState: { value: urlHistory[] } = { value: [] };
@@ -18,6 +19,11 @@ const extractHistory = (rawData: string) => {
 const getCurrentHistory = () => {
   const rawData = localStorage.getItem(import.meta.env.VITE_LOCAL_STORAGE_KEY);
   return rawData ? extractHistory(rawData) : null;
+};
+
+const getInitialHistory = () => {
+  const currentHistory = getCurrentHistory();
+  return currentHistory ?? (import.meta.env.DEV ? createMockHistory() : []);
 };
 
 export const addHistory = (newOne: string) => {
@@ -43,7 +49,7 @@ export const addHistory = (newOne: string) => {
 
 export const qrCodeHistory = () => {
   if (typeof import.meta.env.VITE_LOCAL_STORAGE_KEY !== 'undefined') {
-    updateCurrentHistory(getCurrentHistory() ?? []);
+    updateCurrentHistory(getInitialHistory());
   }
 
   addEventListener(
