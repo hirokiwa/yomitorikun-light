@@ -1,11 +1,6 @@
 import { createMockHistory } from './mockHistory';
 import { viewFullHistories } from './viewHistory';
 
-const currentHistoryState: { value: urlHistory[] } = { value: [] };
-const updateCurrentHistory = (newHistory: urlHistory[]) => {
-  currentHistoryState.value = newHistory;
-};
-
 const extractHistory = (rawData: string) => {
   try {
     const result: dataFromLocalStrage = JSON.parse(rawData);
@@ -31,35 +26,40 @@ const limitHistory = (history: urlHistory[]) => history.filter((_, index) => ind
 const buildNextHistory = (newOne: string, currentHistory: urlHistory[]) =>
   limitHistory([{ url: newOne }, ...currentHistory]);
 
-export const addHistory = (newOne: string) => {
-  if (currentHistoryState.value.length > 0 && currentHistoryState.value[0].url === newOne) {
-    return;
-  }
-  const newHistory = buildNextHistory(newOne, currentHistoryState.value);
-
-  viewFullHistories(newHistory);
-  updateCurrentHistory(newHistory);
+const saveHistory = (newHistory: urlHistory[]) => {
   try {
     const newJsonForLocalStrage: dataFromLocalStrage = { history: newHistory };
     localStorage.setItem(
       import.meta.env.VITE_LOCAL_STORAGE_KEY,
       JSON.stringify(newJsonForLocalStrage),
     );
+    return 'succeeded';
   } catch (e) {
     console.error(e);
-    return;
+    return 'failed';
   }
 };
 
-export const qrCodeHistory = () => {
-  if (typeof import.meta.env.VITE_LOCAL_STORAGE_KEY !== 'undefined') {
-    updateCurrentHistory(getInitialHistory());
-  }
+const renderStoredHistory = () => {
+  viewFullHistories(getInitialHistory());
+};
 
+export const addHistory = (newOne: string) => {
+  const currentHistory = getInitialHistory();
+  if (currentHistory.length > 0 && currentHistory[0].url === newOne) {
+    return;
+  }
+  if (saveHistory(buildNextHistory(newOne, currentHistory)) === 'failed') {
+    return;
+  }
+  renderStoredHistory();
+};
+
+export const qrCodeHistory = () => {
   addEventListener(
     'DOMContentLoaded',
     () => {
-      viewFullHistories(currentHistoryState.value);
+      renderStoredHistory();
     },
     { once: true },
   );
@@ -68,9 +68,6 @@ export const qrCodeHistory = () => {
     if (e.key !== import.meta.env.VITE_LOCAL_STORAGE_KEY) {
       return;
     }
-    const newHistoryValue = e.newValue ? extractHistory(e.newValue) : null;
-    const newHistory = newHistoryValue ?? [];
-    viewFullHistories(newHistory);
-    updateCurrentHistory(newHistory);
+    renderStoredHistory();
   });
 };
