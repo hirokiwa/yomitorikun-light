@@ -308,7 +308,7 @@
 @media (any-hover: hover) {
   .historyList:hover:not(:has(.buttonToCopyLink:hover)) {
   }
-  
+
   .historyList:hover:not(:has(.buttonToCopyLink:hover)) .historyLink {
     background-color: var(--color-focus-background);
     color: #4f4f4f;

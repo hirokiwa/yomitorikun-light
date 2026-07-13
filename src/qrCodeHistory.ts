@@ -44,15 +44,17 @@ const renderStoredHistoryList = () => {
   renderHistoryList(readHistoryOrDefault());
 };
 
-export const addHistoryEntry = (newOne: string) => {
+export const addHistoryEntry = (targetUrl: string) => {
   const currentHistory = readHistoryOrDefault();
-  if (currentHistory.length > 0 && currentHistory[0].url === newOne) {
-    return;
-  }
-  if (writeStoredHistory(createNextHistory(newOne, currentHistory)) === 'failed') {
-    return;
-  }
-  renderStoredHistoryList();
+
+  const latestEntryUrl = currentHistory[0]?.url;
+  const isDuplicateOfLatest = latestEntryUrl === targetUrl;
+
+  const writeResult = isDuplicateOfLatest
+    ? 'alreadyExists'
+    : writeStoredHistory(createNextHistory(targetUrl, currentHistory));
+
+  return writeResult === 'succeeded' ? renderStoredHistoryList() : writeResult;
 };
 
 export const qrCodeHistory = () => {

@@ -85,13 +85,15 @@ const renderDialogLabels = () => {
 
 const handleCopyTextInDialog = () => {
   const localizedMessages = getDocumentMessages();
-  
+
   const successToCopy = wrightTextToClipboard(dialogState.text) === 'success';
 
   const diaologCopyButtonContent = {
-    text: successToCopy ? localizedMessages.copyPlainTextSucceeded : localizedMessages.copyPlainTextFailed,
+    text: successToCopy
+      ? localizedMessages.copyPlainTextSucceeded
+      : localizedMessages.copyPlainTextFailed,
     iconPath: successToCopy ? copiedIconPath : copyFailedIconPath,
-  }
+  };
 
   renderCopyButtonContent(diaologCopyButtonContent.text, diaologCopyButtonContent.iconPath);
   scheduleCopyButtonContentReset();
