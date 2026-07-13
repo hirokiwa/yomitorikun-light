@@ -26,15 +26,19 @@ const getInitialHistory = () => {
   return currentHistory ?? (import.meta.env.DEV ? createMockHistory() : []);
 };
 
+const limitHistory = (history: urlHistory[]) => history.filter((_, index) => index < 50);
+
+const buildNextHistory = (newOne: string, currentHistory: urlHistory[]) =>
+  limitHistory([{ url: newOne }, ...currentHistory]);
+
 export const addHistory = (newOne: string) => {
   if (currentHistoryState.value.length > 0 && currentHistoryState.value[0].url === newOne) {
     return;
   }
-  const pushedArray: urlHistory[] = [{ url: newOne }, ...currentHistoryState.value];
-  const newHistory =
-    pushedArray.length <= 50 ? pushedArray : pushedArray.filter((_, index) => index < 50);
+  const newHistory = buildNextHistory(newOne, currentHistoryState.value);
 
   viewFullHistories(newHistory);
+  updateCurrentHistory(newHistory);
   try {
     const newJsonForLocalStrage: dataFromLocalStrage = { history: newHistory };
     localStorage.setItem(
