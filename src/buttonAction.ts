@@ -1,5 +1,5 @@
 import { getDocumentMessages } from './i18n/runtime';
-import { addHistory } from './qrCodeHistory';
+import { addHistoryEntry } from './qrCodeHistory';
 import { getBlobFromClipboard } from './utils/clipboard';
 import { qrBlobToString } from './utils/qrCode';
 import { selectButtonQuery } from './utils/querySelector';
@@ -20,7 +20,7 @@ export const openUrl = (url: string) => {
 };
 
 const handleDecodedQrText = (text: string) => {
-  addHistory(text);
+  addHistoryEntry(text);
   isHttpUrl(text) ? openUrl(text) : viewPlainTextDialog(text);
 };
 

@@ -1,5 +1,5 @@
 import { openUrl } from './buttonAction';
-import { addHistory } from './qrCodeHistory';
+import { addHistoryEntry } from './qrCodeHistory';
 
 const getUrlFromQuery = () => {
   try {
@@ -16,7 +16,7 @@ const getUrlFromQuery = () => {
 export const openFromQueryParameter = () => {
   const urlToOpen = getUrlFromQuery();
   if (urlToOpen) {
-    addHistory(urlToOpen);
+    addHistoryEntry(urlToOpen);
     openUrl(urlToOpen);
   }
 

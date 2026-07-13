@@ -196,7 +196,7 @@ const bindHistoryTextButton = (historyWithId: historyWithIdType) => {
   };
 };
 
-export const viewFullHistories = (history: urlHistory[]) => {
+export const renderHistoryList = (history: urlHistory[]) => {
   const localizedMessages = getDocumentMessages();
   const historyElement = selectDivQuery('#historyElement');
   if (!historyElement) {
