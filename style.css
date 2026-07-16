@@ -1,3 +1,12 @@
+.body {
+  --color-text: #707070;
+  --color-text-strong: #4f4f4f;
+  --color-border: #acacac;
+  --color-focus-background: #e6e6e6;
+  --color-primary: #9bf5d5;
+  --color-primary-hover: #c9feec;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -226,8 +235,7 @@
 }
 
 .historyWrapper {
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-left: 0.5em;
 }
 
 .historyChild {
@@ -245,6 +253,7 @@
   .historyUnorderedList {
     overflow-y: scroll;
     height: 100%;
+    padding-right: 1.25rem;
   }
 }
 
@@ -257,8 +266,15 @@
   width: 100%;
 }
 
-.historyLink:hover {
-  color: #bee8d9;
+.historyLink--button {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font: inherit;
+  padding: 0;
+  text-align: left;
 }
 
 .historyLinkFavionWrapper {
@@ -268,13 +284,44 @@
 }
 
 .historyList {
-  margin: 1em 0;
   list-style: none;
   display: flex;
   align-items: center;
+  border-radius: 0.5em;
+  overflow: hidden;
+  position: relative;
+}
+
+.historyList:has(.historyLink:focus) .historyLink {
+  background-color: var(--color-focus-background);
+}
+
+.historyList .historyLink {
+  padding: 0.5em;
+  padding-right: 2.75em;
+}
+
+.historyList:has(.historyLink:focus) .historyLink {
+  color: #4f4f4f;
+}
+
+@media (any-hover: hover) {
+  .historyList:hover:not(:has(.buttonToCopyLink:hover)) {
+  }
+
+  .historyList:hover:not(:has(.buttonToCopyLink:hover)) .historyLink {
+    background-color: var(--color-focus-background);
+    color: #4f4f4f;
+  }
+
+  .historyList:hover:not(:has(.buttonToCopyLink:hover)) a.historyLink {
+    text-decoration: underline;
+  }
 }
 
 .buttonToCopyLink {
+  position: absolute;
+  right: 0.5rem;
   margin-left: auto;
   background-color: transparent;
   border: none;
@@ -286,11 +333,24 @@
   justify-content: center;
   align-items: center;
 }
-.buttonToCopyLink:hover {
+.buttonToCopyLink:focus {
+  border-radius: 0.5em;
   background-color: #e6e6e6;
+  scale: 1.08;
+}
+
+@media (any-hover: hover) {
+  .buttonToCopyLink:hover {
+    border-radius: 0.5em;
+    background-color: #e6e6e6;
+    scale: 1.08;
+  }
 }
 
 .copyIconSvg {
+  width: 24px;
+  height: 24px;
+  padding: 4px;
   margin-left: auto;
 }
 
@@ -318,6 +378,66 @@
 
 .readButtonText {
   margin-left: 0.5em;
+}
+
+.plain-text-dialog {
+  border: solid 1px var(--color-border);
+  border-radius: 0.5rem;
+  color: var(--color-text);
+  max-width: min(32rem, calc(100vw - 2rem));
+  padding: 0;
+}
+
+.plain-text-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.plain-text-dialog__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+}
+
+.plain-text-dialog__text {
+  color: var(--color-text-strong);
+  line-height: 1.7;
+  max-height: min(50vh, 24rem);
+  min-width: min(24rem, calc(100vw - 4.5rem));
+  overflow: auto;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.plain-text-dialog__copy-button {
+  align-items: center;
+  appearance: none;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 0.5rem;
+  color: var(--color-text-strong);
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+}
+
+.plain-text-dialog__copy-button:focus {
+  background-color: var(--color-primary-hover);
+  scale: 1.02;
+}
+
+@media (any-hover: hover) {
+  .plain-text-dialog__copy-button:hover {
+    background-color: var(--color-primary-hover);
+    scale: 1.02;
+  }
+}
+
+.plain-text-dialog__copy-icon {
+  fill: currentColor;
 }
 
 /* ------------------ */
