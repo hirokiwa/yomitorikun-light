@@ -1,6 +1,8 @@
 import { createMockHistory } from './mockHistory';
 import { renderHistoryList } from './viewHistory';
 
+const MAX_HISTORY_ENTRIES = 50;
+
 const parseStoredHistory = (rawData: string) => {
   try {
     const result: dataFromLocalStrage = JSON.parse(rawData);
@@ -21,12 +23,7 @@ const readHistoryOrDefault = () => {
   return storedHistory ?? (import.meta.env.DEV ? createMockHistory() : []);
 };
 
-const trimHistoryToLimit = (history: urlHistory[]) => history.filter((_, index) => index < 50);
-
-const createNextHistory = (newOne: string, currentHistory: urlHistory[]) =>
-  trimHistoryToLimit([{ url: newOne }, ...currentHistory]);
-
-const writeStoredHistory = (newHistory: urlHistory[]) => {
+const writeHistoryToStorage = (newHistory: urlHistory[]) => {
   try {
     const newJsonForLocalStrage: dataFromLocalStrage = { history: newHistory };
     localStorage.setItem(
@@ -44,17 +41,27 @@ const renderStoredHistoryList = () => {
   renderHistoryList(readHistoryOrDefault());
 };
 
-export const addHistoryEntry = (targetUrl: string) => {
+const excludeDuplicateUrls = (newUrl: string, history: urlHistory[]) =>
+  history.filter((entry) => entry.url !== newUrl);
+const addNewUrlToHistory = (newUrl: string, history: urlHistory[]) => [{ url: newUrl }, ...history];
+const trimHistoryToLimit = (history: urlHistory[], limit: number) => history.slice(0, limit);
+
+const createNewHistory = (newUrl: string, currentHistory: urlHistory[]) => {
+  const filteredHistory = excludeDuplicateUrls(newUrl, currentHistory);
+  const updatedHistory = addNewUrlToHistory(newUrl, filteredHistory);
+  const trimmedHistory = trimHistoryToLimit(updatedHistory, MAX_HISTORY_ENTRIES);
+  return trimmedHistory;
+};
+
+export const addHistoryEntry = (newUrl: string) => {
   const currentHistory = readHistoryOrDefault();
+  const newHistory = createNewHistory(newUrl, currentHistory);
+  const writeResult = writeHistoryToStorage(newHistory);
+  if (writeResult === 'succeeded') {
+    renderHistoryList(newHistory);
+  }
 
-  const latestEntryUrl = currentHistory[0]?.url;
-  const isDuplicateOfLatest = latestEntryUrl === targetUrl;
-
-  const writeResult = isDuplicateOfLatest
-    ? 'alreadyExists'
-    : writeStoredHistory(createNextHistory(targetUrl, currentHistory));
-
-  return writeResult === 'succeeded' ? renderStoredHistoryList() : writeResult;
+  return writeResult;
 };
 
 export const qrCodeHistory = () => {
